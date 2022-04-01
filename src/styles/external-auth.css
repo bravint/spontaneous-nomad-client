@@ -1,0 +1,54 @@
+.signin-external-auth {
+    display: grid;
+    grid-template-columns: repeat(3, 5rem);
+    gap: 1rem;
+    align-items: center;
+    justify-items: center;
+    background-color: white;
+}
+
+.external-auth-logo {
+    height: 2.5rem;
+}
+
+.external-auth-provider:hover {
+    cursor: pointer;
+}
+
+.external-auth-container {
+    display: grid;
+    gap: 1rem;
+}
+
+.external-auth-provider {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    border-radius: 4px;
+    height: 3rem;
+    padding: 4px;
+}
+
+.auth-provider-google {
+    color: grey;
+    font-weight: 600;
+    border: 1px solid grey;
+}
+
+.auth-provider-facebook {
+    background-color: #3c5a9a;
+    color: white;
+    font-weight: 600;
+    border: 1px solid #3c5a9a;
+}
+
+.auth-provider-apple {
+    font-weight: 600;
+    border: 1px solid black;
+}
+
+.external-auth-text {
+    text-align: center;
+}
