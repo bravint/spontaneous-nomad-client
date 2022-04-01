@@ -1,0 +1,108 @@
+.signin {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+    align-items: center;
+}
+
+.signin-hero {
+    height: 100%;
+    background-image: url('../assets/auth/hero.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.signin-auth-section {
+    display: grid;
+    grid-template-rows: 1fr 2rem;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    padding: 1rem;
+    align-items: center;
+}
+
+.signin-auth {
+    display: grid;
+    width: 20rem;
+    margin: auto;
+    align-items: center;
+}
+
+.signin-auth-title {
+    font-size: 3.5em;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.signin-auth-options-container {
+    display: grid;
+    gap: 1rem;
+    margin: 3rem 0;
+}
+
+.signin-auth-form {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.signin-auth-form-button {
+    border: none;
+    background-color: #3f51b5;
+    color: white;
+    height: 2rem;
+    border-radius: 4px;
+    height: 3rem;
+    width: 100%;
+    cursor: pointer;
+}
+
+.signin-auth-input {
+    height: 3rem;
+}
+
+.signin-external-auth-title-container {
+    text-align: center;
+    position: relative;
+}
+
+.signin-external-auth-title-container:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    border-top: 1px solid black;
+    width: 100%;
+    transform: translateY(-50%);
+}
+
+.signin-external-auth-title-links {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.signin-external-auth-title {
+    background-color: white;
+    padding: 0.5rem;
+}
+
+.auth-redirect {
+    margin: 1rem 0;
+}
+
+.auth-redirect-button {
+    margin-top: 2rem;
+}
+
+.signin-redirect-home {
+    text-align: right;
+    cursor: pointer;
+}
+
+.signin-redirect-home:hover {
+    text-align: right;
+    cursor: pointer;
+    text-decoration: underline;
+}

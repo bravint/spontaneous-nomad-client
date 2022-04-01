@@ -42,6 +42,7 @@
     height: 7rem;
     width: 1080px;
     margin: auto;
+    padding: 0 2.4rem;
 
     transform: translateY(-50%);
     z-index: 1;
@@ -54,9 +55,14 @@
     border-radius: 4px;
 }
 
+.home-call-action-text {
+    font-size: 1.5rem;
+}
+
 .home-call-action-auth {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    justify-self: end;
     gap: 1rem;
 }
 
