@@ -13,12 +13,12 @@ export const Header = () => {
                 <li>Contact</li>
             </ul>
             <ul className="header-auth-link">
-                <li className="header-auth-button">
-                    <Link to="/login">Login</Link>
-                </li>
-                <li className="header-auth-button">
-                    <Link to="/register">Register</Link>
-                </li>
+                <Link to="/login">
+                    <li className="header-auth-button">Login</li>
+                </Link>
+                <Link to="/register">
+                    <li className="header-auth-button">Register</li>
+                </Link>
             </ul>
         </header>
     );
