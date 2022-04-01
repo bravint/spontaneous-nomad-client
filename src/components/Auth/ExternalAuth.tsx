@@ -1,3 +1,5 @@
+import React from 'react';
+
 import apple from '../../assets/auth/apple-sml.svg';
 import facebook from '../../assets/auth/facebook-sml.svg';
 import google from '../../assets/auth/google-sml.svg';
