@@ -1,24 +1,72 @@
 .home {
     height: 90vh;
-    width: 1440px;
-    margin: auto
+    margin: auto;
 }
 
-.home-hero  > header {
+.home > header {
     padding: 0 4rem;
+    background-color: transparent;
+
+    color: #021e40;
+    font-weight: 700;
 }
 
 .home-hero {
-    margin: auto;
-    width: 1440px;
     height: 45rem;
+    width: 1440px;
+    margin: auto;
+
     background: url(../assets/img/home-hero.jpg);
     background-repeat: no-repeat;
-    background-size: cover; 
+    background-size: cover;
+
+    border-radius: 4px;
+}
+
+.home-hero-text-container {
+    height: 100%;
+    width: 1440px;
+    margin: auto;
+
+    display: grid;
+    align-items: center;
 }
 
 .home-hero-text {
     color: white;
     font-size: 8rem;
-    margin-left: 4rem;
+    margin: 0 4rem;
+}
+
+.home-call-action {
+    height: 7rem;
+    width: 1080px;
+    margin: auto;
+
+    transform: translateY(-50%);
+    z-index: 1;
+
+    display: grid;
+    grid-template-columns: 1fr 20rem;
+    align-items: center;
+
+    background-color: white;
+    border-radius: 4px;
+}
+
+.home-call-action-auth {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.home-auth-button {
+    width: 7rem;
+    padding: 0.6rem 0;
+
+    background-color: rgba(185, 184, 184, 0.6);
+    border-radius: 4px;
+
+    text-align: center;
+    cursor: pointer;
 }
