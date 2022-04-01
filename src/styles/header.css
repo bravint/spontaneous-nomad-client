@@ -19,10 +19,12 @@ header {
 }
 
 .header-auth-button {
-    padding: 0.6rem 0;
     width: 7rem;
+    padding: 0.6rem 0;
+
+    background-color: rgba(185, 184, 184, 0.6);
     border-radius: 4px;
+
     text-align: center;
     cursor: pointer;
-    background-color: rgba(185, 184, 184, 0.6);
 }
