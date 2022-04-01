@@ -1,0 +1,24 @@
+.home {
+    height: 90vh;
+    width: 1440px;
+    margin: auto
+}
+
+.home-hero  > header {
+    padding: 0 4rem;
+}
+
+.home-hero {
+    margin: auto;
+    width: 1440px;
+    height: 45rem;
+    background: url(../assets/img/home-hero.jpg);
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+
+.home-hero-text {
+    color: white;
+    font-size: 8rem;
+    margin-left: 4rem;
+}
