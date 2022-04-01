@@ -13,8 +13,8 @@ export const Header = () => {
                 <li>Contact</li>
             </ul>
             <ul className="header-auth-link">
-                <li className="header-auth-button">Login</li>
-                <li className="header-auth-button">Register</li>
+                <li className="auth-button">Login</li>
+                <li className="auth-button">Register</li>
             </ul>
         </header>
     );
