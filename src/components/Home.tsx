@@ -1,4 +1,5 @@
 import { Header } from './Header';
+import { Link } from 'react-router-dom';
 
 import '../styles/home.css';
 
@@ -18,10 +19,10 @@ export const Home = () => {
                     </div>
                 </div>
                 <div className="home-call-action">
-                    <p>Track and Share your experiences today!</p>
+                    <p className="home-call-action-text">Track and share your experiences today!</p>
                     <div className="home-call-action-auth">
-                        <p className="home-auth-button">Login</p>
-                        <p className="home-auth-button">Register</p>
+                        <p className="home-auth-button"><Link to="/login">Login</Link></p>
+                        <p className="home-auth-button"><Link to="/register">Register</Link></p>
                     </div>
                 </div>
             </section>
