@@ -1,10 +1,11 @@
-import React, { useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { OAuthLogin } from './oauth/OAuthLogin';
 import { AuthDivider } from './oauth/AuthDivider';
 
 import { StoreContext } from '../utils/store';
+import { HTTP_METHOD, LOCAL_PATH, LOCAL_STORAGE, SERVER_URL, STORE_ACTIONS} from '../utils/config';
 
 import '../styles/auth.css';
 
@@ -12,8 +13,8 @@ export const Login = () => {
     const { dispatch } = useContext(StoreContext);
 
     const navigate = useNavigate();
-    
-    const handleDispatch = (type: any, payload: any) => {
+
+    const handleDispatch = (type: string, payload: any) => {
         dispatch({
             type: type,
             payload: payload,
@@ -27,14 +28,17 @@ export const Login = () => {
 
     const [form, setForm] = useState(initialForm);
 
-    const handleChange = (event: any) =>
-        setForm({ ...form, [event.target.id]: event.target.value });
+    const handleChange = (event: any) => {
+        const { id, value } = event;
+
+        setForm({ ...form, [id]: value });
+    };
 
     const handleSubmit = async (event: any) => {
         event.preventDefault();
 
-        const response = await fetch(`http://localhost:4000/auth/login`, {
-            method: 'POST',
+        const response = await fetch(SERVER_URL.AUTH_LOGIN, {
+            method: HTTP_METHOD.POST,
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -43,11 +47,11 @@ export const Login = () => {
 
         const result = await response.json();
 
-        localStorage.setItem('token', result.token);
+        localStorage.setItem(LOCAL_STORAGE.JWT, result.token);
 
-        handleDispatch('user', result.data);
+        handleDispatch(STORE_ACTIONS.USER, result.data);
 
-        navigate('/dashboard')
+        navigate(LOCAL_PATH.DASHBOARD);
     };
 
     return (
@@ -91,9 +95,11 @@ export const Login = () => {
                     </div>
                 </div>
                 <div className="auth-redirect-home-container">
-                <Link to="/">
-                    <p className="auth-redirect-home">Return to Home Page</p>
-                </Link>
+                    <Link to="/">
+                        <p className="auth-redirect-home">
+                            Return to Home Page
+                        </p>
+                    </Link>
                 </div>
             </div>
         </section>

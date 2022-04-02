@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
+import { useReducer, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
 import { Home } from './Home';
@@ -9,6 +9,7 @@ import { OAuthSuccess } from './oauth/OauthSuccess';
 import { Dashboard } from './Dashboard';
 
 import { StoreContext, reducer, initialState } from '../utils/store';
+import { HTTP_AUTH_TYPE, HTTP_METHOD, LOCAL_PATH, LOCAL_STORAGE, SERVER_URL, STORE_ACTIONS } from '../utils/config';
 
 import '../styles/app.css';
 
@@ -16,10 +17,6 @@ export const App = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
     const { user } = state;
-
-    console.log('state', {
-        state,
-    });
 
     const navigate = useNavigate();
 
@@ -35,33 +32,28 @@ export const App = () => {
             return;
         }
 
-        const token = localStorage.getItem('token');
+        const jwt = localStorage.getItem(LOCAL_STORAGE.JWT);
 
-        if (!token) {
+        if (!jwt) {
             return;
         }
 
         const fetchUserFromToken = async () => {
             try {
-                const response = await fetch(
-                    'http://localhost:4000/auth/user',
-                    {
-                        method: 'GET',
-                        headers: {
-                            Authorization: 'Bearer ' + token,
-                        },
-                    }
-                );
+                const response = await fetch(SERVER_URL.AUTH_USER, {
+                    method: HTTP_METHOD.GET,
+                    headers: {
+                        Authorization: HTTP_AUTH_TYPE.BEARER + jwt,
+                    },
+                });
 
                 const result = await response.json();
 
                 if (result.data) {
-                    handleDispatch('user', result.data);
+                    handleDispatch(STORE_ACTIONS.USER, result.data);
 
-                    navigate('/dashboard');
+                    navigate(LOCAL_PATH.DASHBOARD);
                 }
-
-                navigate('/login');
             } catch (error) {
                 console.log(error);
             }
@@ -74,11 +66,20 @@ export const App = () => {
         <StoreContext.Provider value={{ state: state, dispatch: dispatch }}>
             <div className="app">
                 <Routes>
-                    <Route path="/" element={<Home />}></Route>
-                    <Route path="/login" element={<Login />}></Route>
-                    <Route path="/register" element={<Register />}></Route>
-                    <Route path="/success" element={<OAuthSuccess />}></Route>
-                    <Route path="/dashboard" element={<Dashboard />}></Route>
+                    <Route path={LOCAL_PATH.HOME} element={<Home />}></Route>
+                    <Route path={LOCAL_PATH.LOGIN} element={<Login />}></Route>
+                    <Route
+                        path={LOCAL_PATH.REGISTER}
+                        element={<Register />}
+                    ></Route>
+                    <Route
+                        path={LOCAL_PATH.SUCCESS}
+                        element={<OAuthSuccess />}
+                    ></Route>
+                    <Route
+                        path={LOCAL_PATH.DASHBOARD}
+                        element={<Dashboard />}
+                    ></Route>
                 </Routes>
                 <Footer />
             </div>

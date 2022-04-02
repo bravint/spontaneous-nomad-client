@@ -3,46 +3,45 @@ import { useNavigate } from 'react-router-dom';
 
 import { StoreContext } from '../../utils/store';
 
-import { HTTP_METHOD } from '../../utils/config';
+import { HTTP_METHOD, LOCAL_PATH, LOCAL_STORAGE, SERVER_URL, STORE_ACTIONS} from '../../utils/config';
 
 export const OAuthSuccess = () => {
     const { dispatch } = useContext(StoreContext);
 
     const navigate = useNavigate();
 
-    const handleDispatch = (type :any, payload :any) => {
+    const handleDispatch = (type: string, payload: any) => {
         dispatch({
             type: type,
             payload: payload,
         });
     };
-    
+
     useEffect(() => {
-        const fetchUserFromToken = async () => {
+        const fetchUserFromCookie = async () => {
             try {
-                const response = await fetch('http://localhost:4000/auth/user', {
-                        method: HTTP_METHOD.GET,
-                        credentials: 'include',
-                    }
-                );
+                const response = await fetch(SERVER_URL.AUTH_USER, {
+                    method: HTTP_METHOD.GET,
+                    credentials: 'include',
+                });
 
                 const result = await response.json();
 
                 if (result.data) {
-                    localStorage.setItem('token', result.token);
+                    localStorage.setItem(LOCAL_STORAGE.JWT, result.token);
 
-                    handleDispatch('user', result.data);
+                    handleDispatch(STORE_ACTIONS.USER, result.data);
 
-                    navigate('/dashboard');
+                    navigate(LOCAL_PATH.DASHBOARD);
                 }
             } catch (error) {
                 console.log(error);
 
-                navigate('/login');
+                navigate(LOCAL_PATH.LOGIN);
             }
         };
 
-        fetchUserFromToken();
+        fetchUserFromCookie();
     });
 
     return (
