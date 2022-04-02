@@ -66,20 +66,26 @@ export const App = () => {
         <StoreContext.Provider value={{ state: state, dispatch: dispatch }}>
             <div className="app">
                 <Routes>
-                    <Route path={LOCAL_PATH.HOME} element={<Home />}></Route>
-                    <Route path={LOCAL_PATH.LOGIN} element={<Login />}></Route>
+                    <Route 
+                        path={LOCAL_PATH.HOME} 
+                        element={<Home />}
+                    />
+                    <Route 
+                        path={LOCAL_PATH.LOGIN} 
+                        element={<Login />}
+                    />
                     <Route
                         path={LOCAL_PATH.REGISTER}
                         element={<Register />}
-                    ></Route>
+                    />
                     <Route
                         path={LOCAL_PATH.SUCCESS}
                         element={<OAuthSuccess />}
-                    ></Route>
+                    />
                     <Route
                         path={LOCAL_PATH.DASHBOARD}
                         element={<Dashboard />}
-                    ></Route>
+                    />
                 </Routes>
                 <Footer />
             </div>
