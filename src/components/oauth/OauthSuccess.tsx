@@ -43,7 +43,7 @@ export const OAuthSuccess = () => {
         };
 
         fetchUserFromToken();
-    }, []);
+    });
 
     return (
         <div>

@@ -68,7 +68,7 @@ export const App = () => {
         };
 
         fetchUserFromToken();
-    }, []);
+    });
 
     return (
         <StoreContext.Provider value={{ state: state, dispatch: dispatch }}>
