@@ -1,12 +1,25 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { OAuthLogin } from './oauth/OAuthLogin';
 import { AuthDivider } from './oauth/AuthDivider';
 
+import { StoreContext } from '../utils/store';
+
 import '../styles/auth.css';
 
 export const Login = () => {
+    const { dispatch } = useContext(StoreContext);
+
+    const navigate = useNavigate();
+    
+    const handleDispatch = (type: any, payload: any) => {
+        dispatch({
+            type: type,
+            payload: payload,
+        });
+    };
+
     const initialForm = {
         username: '',
         password: '',
@@ -30,7 +43,11 @@ export const Login = () => {
 
         const result = await response.json();
 
-        console.log('result', result);
+        localStorage.setItem('token', result.token);
+
+        handleDispatch('user', result.data);
+
+        navigate('/dashboard')
     };
 
     return (
@@ -49,6 +66,7 @@ export const Login = () => {
                             placeholder="Enter your Username"
                             value={form.username}
                             onChange={handleChange}
+                            required
                         />
                         <input
                             className="auth-input"
@@ -57,6 +75,7 @@ export const Login = () => {
                             placeholder="Enter your Password"
                             value={form.password}
                             onChange={handleChange}
+                            required
                         />
                         <button className="auth-form-button">Sign In</button>
                     </form>

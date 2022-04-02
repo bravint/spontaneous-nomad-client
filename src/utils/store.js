@@ -2,13 +2,13 @@ import { createContext } from 'react';
 
 import { STORE_ACTIONS } from './config';
 
-export const StoreContext = createContext(undefined);
-
 export const initialState = {
     user: '',
 };
 
-export const reducer = (state: IState, action: IActionUser) => {
+export const StoreContext = createContext();
+
+export const reducer = (state, action) => {
     switch (action.type) {
         case STORE_ACTIONS.USER:
             return {
@@ -20,11 +20,3 @@ export const reducer = (state: IState, action: IActionUser) => {
     }
 };
 
-interface IActionUser {
-    type: string;
-    payload: object
-}
-
-interface IState{
-    user: object
-}
