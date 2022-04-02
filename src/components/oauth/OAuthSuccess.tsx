@@ -17,6 +17,8 @@ export const OAuthSuccess = () => {
         });
     };
 
+    console.log('success')
+
     useEffect(() => {
         const fetchUserFromCookie = async () => {
             try {

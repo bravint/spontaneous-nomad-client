@@ -2,10 +2,10 @@ import { useReducer, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
 import { Home } from './Home';
-import { Login } from './Login';
-import { Register } from './Register';
+import { Login } from './auth/Login';
+import { Register } from './auth/Register';
 import { Footer } from './Footer';
-import { OAuthSuccess } from './oauth/OauthSuccess';
+import { OAuthSuccess } from './oauth/OAuthSuccess';
 import { Dashboard } from './Dashboard';
 
 import { StoreContext, reducer, initialState } from '../utils/store';

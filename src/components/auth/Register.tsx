@@ -1,13 +1,13 @@
 import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { OAuthLogin } from './oauth/OAuthLogin';
-import { AuthDivider } from './oauth/AuthDivider';
+import { OAuthLogin } from '../oauth/OAuthLogin';
+import { AuthDivider } from '../oauth/AuthDivider';
 
-import { StoreContext } from '../utils/store';
-import { HTTP_METHOD, LOCAL_PATH, LOCAL_STORAGE, SERVER_URL, STORE_ACTIONS} from '../utils/config';
+import { StoreContext } from '../../utils/store';
+import { HTTP_METHOD, LOCAL_PATH, LOCAL_STORAGE, SERVER_URL, STORE_ACTIONS} from '../../utils/config';
 
-import '../styles/auth.css';
+import '../../styles/auth.css';
 
 export const Register = () => {
     const { dispatch } = useContext(StoreContext);
@@ -57,10 +57,12 @@ export const Register = () => {
     };
 
     return (
-        <section className="signin">
-            <div className="signin-hero">&nbsp;</div>
-            <div className="signin-auth-section">
-                <p className="auth-title">Register</p>
+        <section className="auth">
+            <div className="auth-hero-container">&nbsp;</div>
+            <div className="auth-options-section">
+                <p className="auth-options-title">
+                Create<br/> Account
+                </p>
                 <div className="auth-options-container">
                     <form className="auth-form" onSubmit={handleSubmit}>
                         <input

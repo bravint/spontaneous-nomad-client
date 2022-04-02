@@ -1,20 +1,20 @@
-.signin {
+.auth {
     height: 100vh;
     display: grid;
     grid-template-columns: 1fr 30rem;
     align-items: center;
 }
 
-.signin-hero {
+.auth-hero-container {
     height: 100%;
     background-image: url('../assets/auth/hero.webp');
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.signin-auth-section {
+.auth-options-section {
     display: grid;
-    grid-template-rows: 1fr 32rem 1fr;
+    grid-template-rows: repeat(3, auto);
     height: 100%;
     width: 100%;
     margin: auto;
@@ -23,14 +23,7 @@
     justify-content: center;
 }
 
-.signin-auth {
-    display: grid;
-    width: 20rem;
-    margin: auto;
-    align-items: center;
-}
-
-.auth-title {
+.auth-options-title {
     font-size: 3.5rem;
     font-weight: 600;
 }
@@ -49,7 +42,6 @@
 
 .auth-form {
     display: grid;
-    grid-template-rows: repeat(3, 1fr);
     gap: 1rem;
 }
 

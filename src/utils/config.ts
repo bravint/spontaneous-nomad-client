@@ -1,4 +1,4 @@
-export const SERVER_ADDRESS = process.env.REACT_APP_SERVER_ADDRESS as string;
+const SERVER_ADDRESS = process.env.REACT_APP_SERVER_ADDRESS as string;
 
 export const STORE_ACTIONS = {
     USER: 'user' as string,
