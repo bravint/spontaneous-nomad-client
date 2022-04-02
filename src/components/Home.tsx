@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Header } from './Header';
@@ -15,16 +14,23 @@ export const Home = () => {
                         <h1 className="home-hero-text">
                             Share
                             <br />
-                            your favourite <br />
+                            your favourite
+                            <br />
                             destinations
                         </h1>
                     </div>
                 </div>
                 <div className="home-call-action">
-                    <p className="home-call-action-text">Track and share your experiences today!</p>
+                    <p className="home-call-action-text">
+                        Track and share your experiences today!
+                    </p>
                     <div className="home-call-action-auth">
-                    <Link to="/login"><p className="home-auth-button">Login</p></Link>
-                    <Link to="/register"><p className="home-auth-button">Register</p></Link>
+                        <Link to="/login">
+                            <p className="home-auth-button">Login</p>
+                        </Link>
+                        <Link to="/register">
+                            <p className="home-auth-button">Register</p>
+                        </Link>
                     </div>
                 </div>
             </section>

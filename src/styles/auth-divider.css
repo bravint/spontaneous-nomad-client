@@ -1,0 +1,25 @@
+.auth-divider-title-container {
+    text-align: center;
+    position: relative;
+}
+
+.auth-divider-title-container:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    border-top: 1px solid black;
+    width: 100%;
+    transform: translateY(-50%);
+}
+
+.auth-divider-title-mid-border {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.auth-divider-title {
+    background-color: var(--clr-offwhite);
+    padding: 0.5rem;
+}

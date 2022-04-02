@@ -3,7 +3,7 @@
 :root {
     --clr-black: hsl(0, 0%, 0%);
     --clr-white: hsl(0, 0%, 100%);
+    --clr-offwhite: hsl(249, 78%, 98%);
 
     --ff-primary: 'Roboto';
 }
-
