@@ -20,7 +20,7 @@ export const Header = () => {
         });
     };
 
-    const capitaliseFirstLetter = (string: any) =>
+    const capitaliseFirstLetter = (string: string) =>
         string.replace(/\b\w/g, (c: string) => c.toUpperCase());
 
     const handleLogout = () => {
