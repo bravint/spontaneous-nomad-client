@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-import { ExternalAuth } from './Auth/ExternalAuth';
+import { OAuthLogin } from './oauth/OAuthLogin';
+import { AuthDivider } from './oauth/AuthDivider';
 
-import '../styles/signin.css';
+import '../styles/auth.css';
 
 export const Login = () => {
     const initialForm = {
@@ -22,7 +24,6 @@ export const Login = () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                credentials: 'include',
             },
             body: JSON.stringify(form),
         });
@@ -36,50 +37,45 @@ export const Login = () => {
         <section className="signin">
             <div className="signin-hero">&nbsp;</div>
             <div className="signin-auth-section">
-                <div className="signin-auth">
-                    <h1 className="signin-auth-title">Sign In</h1>
-                    <div className="signin-auth-options-container">
-                        <form
-                            className="signin-auth-form"
-                            onSubmit={handleSubmit}
-                        >
-                            <input
-                                className="signin-auth-input"
-                                id="username"
-                                type="text"
-                                placeholder="Enter your Username"
-                                value={form.username}
-                                onChange={handleChange}
-                            />
-                            <input
-                                className="signin-auth-input"
-                                id="password"
-                                type="password"
-                                placeholder="Enter your Password"
-                                value={form.password}
-                                onChange={handleChange}
-                            />
-                            <button className="signin-auth-form-button">
-                                Sign In
+                <p className="auth-title">
+                    Welcome <br /> Back
+                </p>
+                <div className="auth-options-container">
+                    <form className="auth-form" onSubmit={handleSubmit}>
+                        <input
+                            className="auth-input"
+                            id="username"
+                            type="text"
+                            placeholder="Enter your Username"
+                            value={form.username}
+                            onChange={handleChange}
+                        />
+                        <input
+                            className="auth-input"
+                            id="password"
+                            type="password"
+                            placeholder="Enter your Password"
+                            value={form.password}
+                            onChange={handleChange}
+                        />
+                        <button className="auth-form-button">Sign In</button>
+                    </form>
+                    <AuthDivider />
+                    <OAuthLogin />
+                    <div className="auth-redirect">
+                        <h3>Need an account?</h3>
+                        <Link to="/register">
+                            <button className="auth-form-button auth-redirect-button">
+                                Create an Account Here
                             </button>
-                        </form>
-                        <div className="signin-external-auth-title-container">
-                            <div className="signin-external-auth-title-links">
-                                <h4 className="signin-external-auth-title">
-                                    Or
-                                </h4>
-                            </div>
-                        </div>
-                        <ExternalAuth />
-                        <div className="auth-redirect">
-                            <h3>Need an account?</h3>
-                            <button className="signin-auth-form-button auth-redirect-button">
-                                Sign up here
-                            </button>
-                        </div>
+                        </Link>
                     </div>
                 </div>
-                <p className="signin-redirect-home">Return to Home Page</p>
+                <div className="auth-redirect-home-container">
+                <Link to="/">
+                    <p className="auth-redirect-home">Return to Home Page</p>
+                </Link>
+                </div>
             </div>
         </section>
     );

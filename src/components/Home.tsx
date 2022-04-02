@@ -21,10 +21,16 @@ export const Home = () => {
                     </div>
                 </div>
                 <div className="home-call-action">
-                    <p className="home-call-action-text">Track and share your experiences today!</p>
+                    <p className="home-call-action-text">
+                        Track and share your experiences today!
+                    </p>
                     <div className="home-call-action-auth">
-                    <Link to="/login"><p className="home-auth-button">Login</p></Link>
-                    <Link to="/register"><p className="home-auth-button">Register</p></Link>
+                        <Link to="/login">
+                            <p className="home-auth-button">Login</p>
+                        </Link>
+                        <Link to="/register">
+                            <p className="home-auth-button">Register</p>
+                        </Link>
                     </div>
                 </div>
             </section>

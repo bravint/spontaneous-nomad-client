@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-import { ExternalAuth } from './Auth/ExternalAuth';
+import { OAuthLogin } from './oauth/OAuthLogin';
 
-import '../styles/signin.css';
+import '../styles/auth.css';
 
 export const Register = () => {
     const initialForm = {
@@ -38,7 +39,7 @@ export const Register = () => {
             <div className="signin-hero">&nbsp;</div>
             <div className="signin-auth-section">
                 <div className="signin-auth">
-                    <h1 className="signin-auth-title">Sign Up</h1>
+                    <h1 className="signin-auth-title">Create Account</h1>
                     <div className="signin-auth-options-container">
                         <form
                             className="signin-auth-form"
@@ -93,16 +94,18 @@ export const Register = () => {
                                 </h4>
                             </div>
                         </div>
-                        <ExternalAuth />
+                        <OAuthLogin />
                         <div className="auth-redirect">
                             <h3>Already have an account?</h3>
+                            <Link to="/login">
                             <button className="signin-auth-form-button auth-redirect-button">
                                 Sign In
                             </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
-                <p className="signin-redirect-home">Return to Home Page</p>
+                <Link to="/"><p className="auth-redirect-home">Return to Home Page</p></Link>
             </div>
         </section>
     );
