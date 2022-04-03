@@ -1,5 +1,7 @@
 const SERVER_ADDRESS = process.env.REACT_APP_SERVER_ADDRESS as string;
 
+export const GOOGLE_MAPS_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY as string;
+
 export const STORE_ACTIONS = {
     USER: 'user' as string,
 };
