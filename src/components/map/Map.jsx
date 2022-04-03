@@ -48,6 +48,7 @@ export const Map = () => {
                 mapContainerStyle={containerStyle}
                 center={center}
                 zoom={3}
+                options={{fullscreenControl: false, streetViewControl: false}}
             >
                 {locations.map((location) => {
                     return (
