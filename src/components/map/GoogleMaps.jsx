@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { Rating } from 'react-simple-star-rating';
 
 import {
@@ -10,39 +10,41 @@ import {
 
 import { StoreContext } from '../../utils/store';
 
-import { GOOGLE_MAPS_API_KEY, STORE_ACTIONS } from '../../utils/config';
+import { GOOGLE_MAPS_API_KEY } from '../../utils/config';
 
 import '../../styles/map.css';
 
-export const GoogleMaps = () => {
-    const { state, dispatch } = useContext(StoreContext);
+export const GoogleMaps = (props) => {
+    const { setNewLocation } = props;
+
+    const { state } = useContext(StoreContext);
 
     const { locations } = state;
 
-    const handleDispatch = (type, payload) => {
-        dispatch({
-            type: type,
-            payload: payload,
-        });
+    const initialMapCenter = {
+        lat: 0,
+        lng: 0,
     };
 
-    const initialMapCenterLocation = { lat: 0, lng: 0 };
-
     const [selectedLocation, setSelectedLocation] = useState(null);
-    const [center, setCenter] = useState(initialMapCenterLocation);
+    const [center, setCenter] = useState(initialMapCenter);
 
     const handleMarkerClick = (location) => setSelectedLocation(location);
 
     function handleMapClick(event) {
-        setCenter({ lat: event.latLng.lat(), lng: event.latLng.lng() });
-        const newLocation = {
-            name: 'newLocation',
-            id: locations.length + 1,
+        const newCenter = {
             lat: event.latLng.lat(),
             lng: event.latLng.lng(),
-            rating: 5,
         };
-        handleDispatch(STORE_ACTIONS.LOCATIONS, [...locations, newLocation]);
+
+        setCenter(newCenter);
+
+        const locationToCreate = {
+            lat: event.latLng.lat(),
+            lng: event.latLng.lng(),
+        };
+
+        setNewLocation(locationToCreate);
     }
 
     const containerStyle = {
@@ -61,6 +63,7 @@ export const GoogleMaps = () => {
                     options={{
                         fullscreenControl: false,
                         streetViewControl: false,
+                        mapTypeId: 'satellite',
                     }}
                 >
                     {locations.map((location) => {
@@ -88,16 +91,20 @@ export const GoogleMaps = () => {
                             <div>
                                 <p>{selectedLocation.name}</p>
                                 <Rating
-                                    ratingValue={100}
+                                    ratingValue={
+                                        selectedLocation.rating[0].ratings
+                                    }
                                     size={50}
                                     transition
                                     className="view-locations-rating"
                                 />
-                                        <form>
-            <input id="name" type="text" placeholder="Name of Location"/>
-            <input id="lat" type="text" placeholder="latitude"/>
-            <input id="lng" type="text" placeholder="longitude"/>
-        </form>
+                                <form>
+                                    <input
+                                        id="name"
+                                        type="text"
+                                        placeholder="Name of Location"
+                                    />
+                                </form>
                                 <button>Edit</button>
                             </div>
                         </InfoWindow>

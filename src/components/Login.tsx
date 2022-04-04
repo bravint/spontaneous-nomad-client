@@ -29,7 +29,7 @@ export const Login = () => {
     const [form, setForm] = useState(initialForm);
 
     const handleChange = (event: any) => {
-        const { name, value } = event;
+        const { name, value } = event.target;
 
         setForm({ ...form, [name]: value });
     };

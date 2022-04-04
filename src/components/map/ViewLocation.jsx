@@ -20,7 +20,7 @@ export const ViewLocation = () => {
                 return (
                     <li className="view-locations-list" key={location.id}>
                         <p>{location.name}</p>
-                        <Rating readonly={true} ratingValue={100} allowHover={false}onClick={onClick}/>
+                        <Rating readonly={true} ratingValue={location.rating[0].ratings} allowHover={false}onClick={onClick}/>
                     </li>
                 );
             })}
