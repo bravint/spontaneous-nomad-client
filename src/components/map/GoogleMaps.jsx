@@ -14,7 +14,7 @@ import { GOOGLE_MAPS_API_KEY, STORE_ACTIONS } from '../../utils/config';
 
 import '../../styles/map.css';
 
-export const GoogleMapsContainer = () => {
+export const GoogleMaps = () => {
     const { state, dispatch } = useContext(StoreContext);
 
     const { locations } = state;
@@ -44,8 +44,6 @@ export const GoogleMapsContainer = () => {
         };
         handleDispatch(STORE_ACTIONS.LOCATIONS, [...locations, newLocation]);
     }
-
-    const handleLocationSubmit = () => {};
 
     const containerStyle = {
         width: '100%',

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
 import { Header } from './Header';
-import { GoogleMapsContainer } from './map/GoogleMapsContainer';
+import { GoogleMaps } from './map/GoogleMaps';
 import { ViewLocation } from './map/ViewLocation';
+import { CreateLocation } from './map/CreateLocation';
 
 import '../styles/map.css';
 
@@ -13,7 +14,7 @@ export const Map = () => {
         <>
             <Header />
             <section className="map">
-                <GoogleMapsContainer />
+                <GoogleMaps />
                 <ViewLocation />
             </section>
         </>
