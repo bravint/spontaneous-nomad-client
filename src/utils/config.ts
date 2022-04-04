@@ -4,6 +4,8 @@ export const GOOGLE_MAPS_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY as 
 
 export const STORE_ACTIONS = {
     USER: 'user' as string,
+    LOCATIONS: 'locations' as string,
+    RATING: 'rating' as string,
 };
 
 export const HTTP_METHOD = {
@@ -16,9 +18,10 @@ export const HTTP_METHOD = {
 
 export const LOCAL_PATH = {
     DASHBOARD: '/dashboard' as string,
-    HOME: '/' as string,
     LOGIN: '/login' as string,
+    MAP: '/map' as string,
     REGISTER: '/register' as string,
+    ROOT: '/' as string,
     SUCCESS: '/success' as string,
 };
 

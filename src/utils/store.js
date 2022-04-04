@@ -4,6 +4,8 @@ import { STORE_ACTIONS } from './config';
 
 export const initialState = {
     user: '',
+    locations: [],
+    rating: 0,
 };
 
 export const StoreContext = createContext();
@@ -14,6 +16,16 @@ export const reducer = (state, action) => {
             return {
                 ...state,
                 user: action.payload,
+            };
+        case STORE_ACTIONS.LOCATIONS:
+            return {
+                ...state,
+                locations: action.payload,
+            };
+        case STORE_ACTIONS.RATING:
+            return {
+                ...state,
+                rating: action.payload,
             };
         default:
             throw new Error(`Unknown action type: ${action.type}`);

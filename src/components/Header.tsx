@@ -28,40 +28,39 @@ export const Header = () => {
 
         handleDispatch(STORE_ACTIONS.USER, null);
 
-        navigate(LOCAL_PATH.HOME);
+        navigate(LOCAL_PATH.ROOT);
     };
 
     return (
         <header>
             <div className="header-title">Spontanous Nomad</div>
             <ul className="header-site-link">
-                <li>Home</li>
                 <li>About</li>
                 <li>Contact</li>
-            </ul>
+            
             {user && (
                 <>
                     <Link to={LOCAL_PATH.DASHBOARD} className="router-link">
-                        <h2 className="header-link">My Trips</h2>
+                        <li className="header-link">My Trips</li>
                     </Link>
-                    <div className="header-profile">
-                        <h2>Hi, {capitaliseFirstLetter(user.username)}</h2>
-                        <button
-                            className="header-auth-button"
-                            onClick={handleLogout}
-                        >
-                            Logout
-                        </button>
-                    </div>
+                    <Link to={LOCAL_PATH.MAP} className="router-link">
+                        <li className="header-link">Map</li>
+                    </Link>
+
+                    <li>Hi, {capitaliseFirstLetter(user.username)}</li>
+                    <li
+                        className="auth-button auth-button-login"
+                        onClick={handleLogout}
+                    >
+                        Logout
+                    </li>
                 </>
             )}
+            </ul>
             {!user && (
                 <ul className="header-auth-link">
                     <Link to="/login">
-                        <li className="header-auth-button">Login</li>
-                    </Link>
-                    <Link to="/register">
-                        <li className="header-auth-button">Register</li>
+                        <li className="auth-button auth-button-login">Login</li>
                     </Link>
                 </ul>
             )}
