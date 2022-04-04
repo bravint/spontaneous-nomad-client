@@ -76,6 +76,10 @@ export const App = () => {
                             path={LOCAL_PATH.MAP}
                             element={<Map />}
                         />
+                        <Route
+                            path={LOCAL_PATH.SUCCESS}
+                            element={<OAuthSuccess />}
+                        />
                     </Routes>
                 )}
                 {!user && (
