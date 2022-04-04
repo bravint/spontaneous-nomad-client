@@ -9,7 +9,9 @@ header {
 
 .header-site-link {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 3fr 1fr 3fr 1fr;
+    align-items: center;
+    text-align: center;
 }
 
 .header-auth-link {
@@ -18,13 +20,19 @@ header {
     gap: 1rem;
 }
 
-.header-auth-button {
+.auth-button {
     width: 7rem;
     padding: 0.6rem 0;
-
-    background-color: rgba(185, 184, 184, 0.6);
     border-radius: 4px;
-
+    color: var(--clr-white);
     text-align: center;
     cursor: pointer;
+}
+
+.auth-button-login {
+    background-color: var(--clr-sec-purple);
+}
+
+.auth-button-register {
+    background-color: var(--clr-sec-orange);
 }

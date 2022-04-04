@@ -1,15 +1,24 @@
 import { useReducer, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
-import { Home } from './Home';
-import { Login } from './auth/Login';
-import { Register } from './auth/Register';
-import { Footer } from './Footer';
-import { OAuthSuccess } from './oauth/OAuthSuccess';
 import { Dashboard } from './Dashboard';
+// import { Footer } from './Footer';
+import { Home } from './Home';
+import { Login } from './Login';
+import { Map } from './Map';
+import { Profile } from './Profile';
+import { OAuthSuccess } from './oauth/OAuthSuccess';
+import { Register } from './Register';
 
 import { StoreContext, reducer, initialState } from '../utils/store';
-import { HTTP_AUTH_TYPE, HTTP_METHOD, LOCAL_PATH, LOCAL_STORAGE, SERVER_URL, STORE_ACTIONS } from '../utils/config';
+import {
+    HTTP_AUTH_TYPE,
+    HTTP_METHOD,
+    LOCAL_PATH,
+    LOCAL_STORAGE,
+    SERVER_URL,
+    STORE_ACTIONS,
+} from '../utils/config';
 
 import '../styles/app.css';
 
@@ -65,29 +74,35 @@ export const App = () => {
     return (
         <StoreContext.Provider value={{ state: state, dispatch: dispatch }}>
             <div className="app">
-                <Routes>
-                    <Route 
-                        path={LOCAL_PATH.HOME} 
-                        element={<Home />}
-                    />
-                    <Route 
-                        path={LOCAL_PATH.LOGIN} 
-                        element={<Login />}
-                    />
-                    <Route
-                        path={LOCAL_PATH.REGISTER}
-                        element={<Register />}
-                    />
-                    <Route
-                        path={LOCAL_PATH.SUCCESS}
-                        element={<OAuthSuccess />}
-                    />
-                    <Route
-                        path={LOCAL_PATH.DASHBOARD}
-                        element={<Dashboard />}
-                    />
-                </Routes>
-                <Footer />
+                {user && (
+                    <Routes>
+                        <Route
+                            path={LOCAL_PATH.DASHBOARD}
+                            element={<Dashboard />}
+                        />
+                        <Route path={LOCAL_PATH.MAP} element={<Map />} />
+                        <Route
+                            path={LOCAL_PATH.SUCCESS}
+                            element={<OAuthSuccess />}
+                        />
+                        <Route path={LOCAL_PATH.PROFILE} element={<Profile />} />
+                    </Routes>
+                )}
+                {!user && (
+                    <Routes>
+                        <Route path={LOCAL_PATH.ROOT} element={<Home />} />
+                        <Route path={LOCAL_PATH.LOGIN} element={<Login />} />
+                        <Route path={LOCAL_PATH.PROFILE} element={<Profile />} />
+                        <Route
+                            path={LOCAL_PATH.REGISTER}
+                            element={<Register />}
+                        />
+                        <Route
+                            path={LOCAL_PATH.SUCCESS}
+                            element={<OAuthSuccess />}
+                        />
+                    </Routes>
+                )}
             </div>
         </StoreContext.Provider>
     );

@@ -1,15 +1,15 @@
 import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { OAuthLogin } from '../oauth/OAuthLogin';
-import { AuthDivider } from '../oauth/AuthDivider';
+import { OAuthLogin } from './oauth/OAuthLogin';
+import { AuthDivider } from './auth/AuthDivider';
 
-import { StoreContext } from '../../utils/store';
-import { HTTP_METHOD, LOCAL_PATH, LOCAL_STORAGE, SERVER_URL, STORE_ACTIONS} from '../../utils/config';
+import { StoreContext } from '../utils/store';
+import { HTTP_METHOD, LOCAL_PATH, LOCAL_STORAGE, SERVER_URL, STORE_ACTIONS} from '../utils/config';
 
-import '../../styles/auth.css';
+import '../styles/auth.css';
 
-export const Register = () => {
+export const Login = () => {
     const { dispatch } = useContext(StoreContext);
 
     const navigate = useNavigate();
@@ -22,24 +22,22 @@ export const Register = () => {
     };
 
     const initialForm = {
-        username: '',
-        password: '',
-        passwordCheck: '',
         email: '',
+        password: '',
     };
 
     const [form, setForm] = useState(initialForm);
 
     const handleChange = (event: any) => {
-        const { id, value } = event;
+        const { name, value } = event.target;
 
-        setForm({ ...form, [id]: value });
+        setForm({ ...form, [name]: value });
     };
 
     const handleSubmit = async (event: any) => {
         event.preventDefault();
 
-        const response = await fetch(SERVER_URL.AUTH_REGISTER, {
+        const response = await fetch(SERVER_URL.AUTH_LOGIN, {
             method: HTTP_METHOD.POST,
             headers: {
                 'Content-Type': 'application/json',
@@ -61,57 +59,37 @@ export const Register = () => {
             <div className="auth-hero-container">&nbsp;</div>
             <div className="auth-options-section">
                 <p className="auth-options-title">
-                Create<br/> Account
+                    Welcome <br /> Back
                 </p>
                 <div className="auth-options-container">
                     <form className="auth-form" onSubmit={handleSubmit}>
                         <input
                             className="auth-input"
-                            id="username"
+                            name="email"
                             type="text"
-                            placeholder="Enter a username"
-                            value={form.username}
-                            minLength={3}
-                            maxLength={30}
-                            required
-                            onChange={handleChange}
-                        />
-                        <input
-                            className="auth-input"
-                            id="password"
-                            type="password"
-                            placeholder="Enter a password"
-                            value={form.password}
-                            required
-                            onChange={handleChange}
-                        />
-                        <input
-                            className="auth-input"
-                            id="passwordCheck"
-                            type="password"
-                            placeholder="Re-enter your password"
-                            value={form.passwordCheck}
-                            required
-                            onChange={handleChange}
-                        />
-                        <input
-                            className="auth-input"
-                            id="email"
-                            type="text"
-                            placeholder="Enter your email address"
+                            placeholder="Enter your Email Address"
                             value={form.email}
-                            required
                             onChange={handleChange}
+                            required
                         />
-                        <button className="auth-form-button">Sign Up</button>
+                        <input
+                            className="auth-input"
+                            name="password"
+                            type="password"
+                            placeholder="Enter your Password"
+                            value={form.password}
+                            onChange={handleChange}
+                            required
+                        />
+                        <button className="auth-form-button">Sign In</button>
                     </form>
                     <AuthDivider />
                     <OAuthLogin />
                     <div className="auth-redirect">
-                        <h3>Already have an account?</h3>
-                        <Link to="/login">
+                        <h3>Need an account?</h3>
+                        <Link to="/register">
                             <button className="auth-form-button auth-redirect-button">
-                                Login here
+                                Create an Account Here
                             </button>
                         </Link>
                     </div>

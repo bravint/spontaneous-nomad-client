@@ -4,6 +4,9 @@
     --clr-black: hsl(0, 0%, 0%);
     --clr-white: hsl(0, 0%, 100%);
     --clr-offwhite: hsl(249, 78%, 98%);
+    --clr-pri-blue: hsl(260, 77%, 14%);
+    --clr-sec-orange: hsl(358, 98%, 65%);
+    --clr-sec-purple: hsl(240, 43%, 45%);
 
     --ff-primary: 'Roboto';
 }

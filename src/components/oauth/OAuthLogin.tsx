@@ -5,8 +5,6 @@ import '../../styles/oauth-login.css';
 
 import { SERVER_URL } from '../../utils/config';
 
-console.log(SERVER_URL.OAUTH_GOOGLE)
-
 export const OAuthLogin = () => {
     const handleGoogleLogin = () => window.open(SERVER_URL.OAUTH_GOOGLE, '_self');
 

@@ -1,9 +1,12 @@
 const SERVER_ADDRESS = process.env.REACT_APP_SERVER_ADDRESS as string;
 
-export const GOOGLE_MAPS_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY as string;
+export const GOOGLE_MAPS_API_KEY = process.env
+    .REACT_APP_GOOGLE_MAPS_API_KEY as string;
 
 export const STORE_ACTIONS = {
     USER: 'user' as string,
+    LOCATIONS: 'locations' as string,
+    RATING: 'rating' as string,
 };
 
 export const HTTP_METHOD = {
@@ -16,9 +19,11 @@ export const HTTP_METHOD = {
 
 export const LOCAL_PATH = {
     DASHBOARD: '/dashboard' as string,
-    HOME: '/' as string,
     LOGIN: '/login' as string,
+    MAP: '/map' as string,
+    PROFILE: '/profile' as string,
     REGISTER: '/register' as string,
+    ROOT: '/' as string,
     SUCCESS: '/success' as string,
 };
 
@@ -33,7 +38,10 @@ export const HTTP_AUTH_TYPE = {
 export const SERVER_URL = {
     AUTH_USER: `${SERVER_ADDRESS}/auth/user` as string,
     AUTH_LOGIN: `${SERVER_ADDRESS}/auth/login` as string,
+    AUTH_PROFILE: `${SERVER_ADDRESS}/profile` as string,
     AUTH_REGISTER: `${SERVER_ADDRESS}/auth/register` as string,
+    LOCATION: `${SERVER_ADDRESS}/location` as string,
     OAUTH_GOOGLE: `${SERVER_ADDRESS}/auth/google` as string,
     OAUTH_FACEBOOK: `${SERVER_ADDRESS}/auth/google` as string,
+    RATING: `${SERVER_ADDRESS}/rating` as string,
 };
