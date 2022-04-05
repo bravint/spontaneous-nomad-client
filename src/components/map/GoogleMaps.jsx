@@ -1,6 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { Rating } from 'react-simple-star-rating';
 
+import { CreateLocation } from './CreateLocation';
+import {EditLocation } from './EditLocation';
+
 import {
     GoogleMap,
     LoadScript,
@@ -15,7 +18,7 @@ import { GOOGLE_MAPS_API_KEY } from '../../utils/config';
 import '../../styles/map.css';
 
 export const GoogleMaps = (props) => {
-    const { setNewLocation } = props;
+    const { newLocation, setNewLocation } = props;
 
     const { state } = useContext(StoreContext);
 
@@ -51,6 +54,8 @@ export const GoogleMaps = (props) => {
         width: '100%',
         height: '100%',
     };
+
+    console.log(selectedLocation, center)
 
     return (
         <section className="google-map">
@@ -88,25 +93,26 @@ export const GoogleMaps = (props) => {
                                 lng: selectedLocation.lng,
                             }}
                         >
-                            <div>
-                                <p>{selectedLocation.name}</p>
-                                <Rating
-                                    ratingValue={
-                                        selectedLocation.rating[0].ratings
-                                    }
-                                    size={50}
-                                    transition
-                                    className="view-locations-rating"
-                                />
-                                <form>
-                                    <input
-                                        id="name"
-                                        type="text"
-                                        placeholder="Name of Location"
-                                    />
-                                </form>
-                                <button>Edit</button>
-                            </div>
+                            <EditLocation
+                                selectedLocation={selectedLocation}
+                                setSelectedLocation={setSelectedLocation}
+                            />
+                        </InfoWindow>
+                    )}
+                    {newLocation && (
+                        <InfoWindow
+                            onCloseClick={() => {
+                                setSelectedLocation(null);
+                            }}
+                            position={{
+                                lat: newLocation.lat,
+                                lng: newLocation.lng,
+                            }}
+                        >
+                            <CreateLocation
+                                newLocation={newLocation}
+                                setNewLocation={setNewLocation}
+                            />
                         </InfoWindow>
                     )}
                 </GoogleMap>

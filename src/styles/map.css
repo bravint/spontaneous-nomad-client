@@ -1,10 +1,21 @@
 .map {
     display: grid;
-    grid-template-columns: 1fr 20rem;
-    height: calc(100vh - 4.5rem);
+    grid-template-columns: 1fr 30rem;
+    height: 100vh;
 }
 
 .map > * {
     width: 100%;
     height: 100%;
 }
+
+.gm-style .gm-style-iw-c {
+     position: absolute;
+     overflow: hidden;
+     top: 0;
+     left: 0;
+     transform: translate(-50%,-100%);
+     border-radius: 0px;
+     box-shadow: 0 2px 7px 1px rgba(0,0,0,0.3);
+ }
+ 
