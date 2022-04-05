@@ -1,17 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { Header } from './Header';
 import { GoogleMaps } from './map/GoogleMaps';
 import { ViewLocation } from './map/ViewLocation';
-import { CreateLocation } from './map/CreateLocation';
-
-import { StoreContext } from '../utils/store';
 
 import '../styles/map.css';
 
 export const Map = () => {
-    const { dispatch } = useContext(StoreContext);
-
     const [newLocation, setNewLocation] = useState(null);
 
     return (

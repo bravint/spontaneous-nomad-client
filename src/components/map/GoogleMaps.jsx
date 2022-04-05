@@ -1,8 +1,7 @@
 import React, { useState, useContext } from 'react';
-import { Rating } from 'react-simple-star-rating';
 
 import { CreateLocation } from './CreateLocation';
-import {EditLocation } from './EditLocation';
+import { EditLocation } from './EditLocation';
 
 import {
     GoogleMap,
@@ -55,7 +54,7 @@ export const GoogleMaps = (props) => {
         height: '100%',
     };
 
-    console.log(selectedLocation, center)
+    console.log(selectedLocation, center);
 
     return (
         <section className="google-map">
