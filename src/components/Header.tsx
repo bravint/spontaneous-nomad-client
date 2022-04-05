@@ -37,25 +37,25 @@ export const Header = () => {
             <ul className="header-site-link">
                 <li>About</li>
                 <li>Contact</li>
-            
-            {user && (
-                <>
-                    <Link to={LOCAL_PATH.DASHBOARD} className="router-link">
-                        <li className="header-link">My Trips</li>
-                    </Link>
-                    <Link to={LOCAL_PATH.MAP} className="router-link">
-                        <li className="header-link">Map</li>
-                    </Link>
 
-                    <li>Hi, {capitaliseFirstLetter(user.username)}</li>
-                    <li
-                        className="auth-button auth-button-login"
-                        onClick={handleLogout}
-                    >
-                        Logout
-                    </li>
-                </>
-            )}
+                {user && (
+                    <>
+                        <Link to={LOCAL_PATH.DASHBOARD} className="router-link">
+                            <li className="header-link">My Trips</li>
+                        </Link>
+                        <Link to={LOCAL_PATH.MAP} className="router-link">
+                            <li className="header-link">Map</li>
+                        </Link>
+
+                        <li>Hi, {capitaliseFirstLetter(user.username)}</li>
+                        <li
+                            className="auth-button auth-button-login"
+                            onClick={handleLogout}
+                        >
+                            Logout
+                        </li>
+                    </>
+                )}
             </ul>
             {!user && (
                 <ul className="header-auth-link">

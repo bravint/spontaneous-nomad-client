@@ -23,12 +23,6 @@ export const Map = () => {
                     setNewLocation={setNewLocation}
                 />
                 <div>
-                    {newLocation && (
-                        <CreateLocation
-                            newLocation={newLocation}
-                            setNewLocation={setNewLocation}
-                        />
-                    )}
                     <ViewLocation />
                 </div>
             </section>

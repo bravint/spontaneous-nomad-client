@@ -35,11 +35,6 @@ export const CreateLocation = (props: any) => {
     const [form, setForm] = useState(initialForm);
     const [rating, setRating] = useState(initialRating)
 
-    console.log('state',{
-        form,
-        rating,
-    })
-
     const handleChange = (event: any) => {
         const { name, value } = event.target;
 
@@ -63,9 +58,8 @@ export const CreateLocation = (props: any) => {
             },
             body: JSON.stringify(locationToCreate),
         });
+        
         const result = await response.json();
-
-        console.log('returnedLocation', result.data)
 
         if (result.data) {
             handleDispatch(STORE_ACTIONS.LOCATIONS, [...locations, result.data]);
