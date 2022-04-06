@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import { AuthDivider } from './auth/AuthDivider';
 import { OAuthLogin } from './oauth/OAuthLogin';
-
+import { SidebarFooter } from './SidebarFooter';
 
 import '../styles/auth.css';
 
@@ -76,6 +76,7 @@ export const User = (props: any) => {
                             Return to Home Page
                         </p>
                     </Link>
+                    <SidebarFooter />
                 </div>
             </div>
         </section>

@@ -1,0 +1,21 @@
+.sidebar-footer {
+    align-self: end;
+    padding-bottom: 1rem;
+}
+
+.sidebar-footer-logo-container {
+    display: grid;
+    grid-template-columns: 1fr 2rem 2rem;
+    gap: 0.5rem;
+
+}
+
+.sidebar-footer-logo {
+    height: 1.8rem;
+    fill: black;
+}
+
+.sidebar-footer-text {
+    margin-top: 0.5rem;
+    text-align: right;
+}

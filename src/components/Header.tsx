@@ -40,6 +40,9 @@ export const Header = () => {
 
                 {user && (
                     <>
+                                            <Link to={LOCAL_PATH.ROOT} className="router-link">
+                            <li className="header-link">My Home</li>
+                        </Link>
                         <Link to={LOCAL_PATH.DASHBOARD} className="router-link">
                             <li className="header-link">My Trips</li>
                         </Link>

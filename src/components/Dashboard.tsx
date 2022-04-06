@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 
 import { Header } from './Header';
 
+import '../styles/dashboard.css';
+
 import {
     HTTP_AUTH_TYPE,
     HTTP_METHOD,
@@ -14,7 +16,7 @@ import { StoreContext } from '../utils/store';
 export const Dashboard = () => {
     const { state, dispatch } = useContext(StoreContext);
 
-    const [following, setFollowing] = useState([])
+    const [following, setFollowing] = useState([]);
 
     const handleDispatch = (type: string, payload: any) => {
         dispatch({
@@ -23,7 +25,7 @@ export const Dashboard = () => {
         });
     };
 
-    console.log('states',{following}, state )
+    console.log('states', { following }, state);
 
     useEffect(() => {
         const jwt = localStorage.getItem(LOCAL_STORAGE.JWT);
@@ -63,13 +65,10 @@ export const Dashboard = () => {
     }, []);
 
     return (
+        
         <section className="dashboard">
-            <Header />
             <div>header</div>
-            <div>search</div>
-            <div>map</div>
-            <div>feed</div>
-            <div>followers</div>
+            <Header />
         </section>
     );
 };
