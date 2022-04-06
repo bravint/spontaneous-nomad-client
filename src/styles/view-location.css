@@ -1,14 +1,32 @@
+.view-locations {
+    overflow: scroll;
+    background-color: var(--clr-offwhite)
+}
+
 .view-locations > h1 {
     height: 2rem;
-    margin: 0 1rem;
+    margin: 1rem;
 }
 
 .view-locations-list {
-    height: 5rem;
-    border-bottom: 1px solid grey;
     margin: 1rem;
+    padding: 1rem;
+    border-radius: 4px;
+    background-color: var(--clr-white);
+    position: relative;
 }
 
 svg.star-svg {
     display: inline;
 }
+
+/* .view-locations-list-button-container {
+    padding: 1rem;
+    background-color: white; 
+    width: fit-content;
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    transform: translateY(50%);
+    transform: translateX(-1rem)
+} */

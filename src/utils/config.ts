@@ -40,6 +40,7 @@ export const SERVER_URL = {
     AUTH_LOGIN: `${SERVER_ADDRESS}/auth/login` as string,
     AUTH_PROFILE: `${SERVER_ADDRESS}/profile` as string,
     AUTH_REGISTER: `${SERVER_ADDRESS}/auth/register` as string,
+    FOLLOW: `${SERVER_ADDRESS}/follow` as string,
     LOCATION: `${SERVER_ADDRESS}/location` as string,
     OAUTH_GOOGLE: `${SERVER_ADDRESS}/auth/google` as string,
     OAUTH_FACEBOOK: `${SERVER_ADDRESS}/auth/google` as string,

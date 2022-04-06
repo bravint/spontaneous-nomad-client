@@ -57,7 +57,7 @@ export const GoogleMaps = (props) => {
     console.log(selectedLocation, center);
 
     return (
-        <section className="google-map">
+        <section className="google-maps">
             <LoadScript googleMapsApiKey={GOOGLE_MAPS_API_KEY}>
                 <GoogleMap
                     onClick={handleMapClick}
