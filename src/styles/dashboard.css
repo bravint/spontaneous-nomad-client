@@ -21,3 +21,10 @@
     border-radius: 50%;
     width: 15rem;
 }
+
+.google-mini-maps {
+    height: 90vh;
+}
+.dashboard-main{
+    height: 100vh;
+}

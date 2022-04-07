@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Header } from './Header';
 import { SidebarFooter } from './SidebarFooter';
 import { TopLocations } from './dashboard/TopLocations';
+import { GoogleMiniMap } from './dashboard/GoogleMiniMap';
 
 import '../styles/dashboard.css';
 
@@ -71,7 +72,8 @@ export const Dashboard = () => {
     return (
         <section className="dashboard">
             <div className="dashboard-main">
-            <Header />
+                <Header />
+                <GoogleMiniMap />
             </div>
             <section className="dashboard-sidebar">
                 <div>

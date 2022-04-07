@@ -1,4 +1,5 @@
 .view-locations {
+    height: 100vh;
     overflow: scroll;
     background-color: var(--clr-offwhite)
 }
