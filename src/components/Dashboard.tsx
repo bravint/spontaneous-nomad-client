@@ -1,6 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import { Header } from './Header';
+import { SidebarFooter } from './SidebarFooter';
+import { TopLocations } from './dashboard/TopLocations';
 
 import '../styles/dashboard.css';
 
@@ -24,6 +26,8 @@ export const Dashboard = () => {
             payload: payload,
         });
     };
+
+    const { user } = state;
 
     console.log('states', { following }, state);
 
@@ -65,10 +69,31 @@ export const Dashboard = () => {
     }, []);
 
     return (
-        
         <section className="dashboard">
-            <div>header</div>
+            <div className="dashboard-main">
             <Header />
+            </div>
+            <section className="dashboard-sidebar">
+                <div>
+                    <div className="dashboard-sidebar-profile-container">
+                        <img
+                            className="dashboard-sidebar-profile-img"
+                            src={user.profileImage}
+                            alt="user profile"
+                        />
+                        <h1>{user.username}</h1>
+                    </div>
+                    <div>
+                        <button>Edit Profile</button>
+                        <button>Logout</button>
+                    </div>
+                </div>
+                <div>
+                    <h1>Top 5 Places</h1>
+                    <TopLocations />
+                </div>
+                <SidebarFooter />
+            </section>
         </section>
     );
 };

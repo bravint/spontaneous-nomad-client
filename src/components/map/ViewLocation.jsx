@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { Rating } from 'react-simple-star-rating';
 
 import { StoreContext } from '../../utils/store';

@@ -5,3 +5,19 @@
     align-items: center;
     background-color: var(--clr-offwhite);
 }
+.dashboard-sidebar {
+    height: 100vh;
+    border: 1px solid black;
+    padding: 0 3rem;
+}
+
+.dashboard-sidebar-profile-container{
+    padding: 2rem 0;
+    display: grid;
+    justify-items: center;
+}
+
+.dashboard-sidebar-profile-img {
+    border-radius: 50%;
+    width: 15rem;
+}
