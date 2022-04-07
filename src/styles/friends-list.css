@@ -1,0 +1,20 @@
+.friends-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 15rem);
+    align-content: space-around;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.friends-list-item {
+    margin: auto;
+}
+
+.friends-list-item > p {
+    text-align: center;
+}
+
+.friends-list-profile-image {
+    width: 8rem;
+    border-radius: 50%;
+}

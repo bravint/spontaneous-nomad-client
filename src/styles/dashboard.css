@@ -22,9 +22,35 @@
     width: 15rem;
 }
 
-.google-mini-maps {
-    height: 90vh;
+.dashboard-sidebar-button-container {
+    display: flex;
+    gap: 1rem;
 }
+
+.dashboard-sidebar-button {
+    border: none;
+    background-color: #3f51b5;
+    color: var(--clr-white);
+    border-radius: 4px;
+    height: 3rem;
+    width: 100%;
+    cursor: pointer;
+}
+
+.google-map {
+    height: 40rem;
+    width: 100%;
+    margin: auto;
+}
+
+.google-maps :hover {
+    cursor: pointer
+}
+
 .dashboard-main{
     height: 100vh;
+    width: 90%;
+    margin: auto;
+    padding: 1rem 0;
+    border: 1px solid black;
 }

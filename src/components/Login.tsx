@@ -12,7 +12,7 @@ import {
     LOCAL_STORAGE,
     SERVER_URL,
     STORE_ACTIONS,
-} from '../utils/config'
+} from '../utils/config';
 
 import '../styles/auth.css';
 
@@ -107,7 +107,9 @@ export const Login = () => {
                             Return to Home Page
                         </p>
                     </Link>
-                    <SidebarFooter />
+                    <section className="sidebar-footer">
+                        <SidebarFooter />
+                    </section>
                 </div>
             </div>
         </section>

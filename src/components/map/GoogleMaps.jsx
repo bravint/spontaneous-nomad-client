@@ -54,10 +54,11 @@ export const GoogleMaps = (props) => {
                 center={center}
                 mapContainerStyle={containerStyle}
                 zoom={4}
+                labels={true}
                 options={{
                     fullscreenControl: false,
                     streetViewControl: false,
-                    mapTypeId: 'satellite',
+                    mapTypeId: 'hybrid',
                 }}
             >
                 {locations.map((location) => {

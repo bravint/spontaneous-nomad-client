@@ -11,21 +11,20 @@ export const TopLocations = () => {
     const sortLocations = () => {
         let clonedLocations = [...locations];
 
-        clonedLocations.sort((a, b) => {
-            return b.rating[0].ratings - a.rating[0].ratings;
-        });
+        clonedLocations.sort(
+            (a, b) => b.rating[0].ratings - a.rating[0].ratings
+        );
 
-        clonedLocations = clonedLocations.splice(0, 5);
+        clonedLocations = clonedLocations.splice(0, 3);
 
         return clonedLocations;
     };
 
     const sortedLocations = sortLocations();
 
-    
-
     return (
-        <>
+        <div className="dashboard-sidebar-locations-list">
+            <h1>Top 5 Places</h1>
             {sortedLocations && (
                 <>
                     {sortedLocations.map((location) => {
@@ -45,6 +44,6 @@ export const TopLocations = () => {
                     })}
                 </>
             )}
-        </>
+        </div>
     );
 };

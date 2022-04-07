@@ -1,26 +1,13 @@
-import React, { useState } from 'react';
-
-import { Header } from './Header';
 import { GoogleMaps } from './map/GoogleMaps';
-import { ViewLocation } from './map/ViewLocation';
+import { ViewLocations } from './map/ViewLocations';
 
 import '../styles/map.css';
 
 export const Map = () => {
-    const [newLocation, setNewLocation] = useState(null);
-
     return (
-        <>
-            <Header />
-            <section className="map">
-                <GoogleMaps
-                    newLocation={newLocation}
-                    setNewLocation={setNewLocation}
-                />
-                <div>
-                    <ViewLocation />
-                </div>
-            </section>
-        </>
+        <section className="map">
+            <GoogleMaps />
+            <ViewLocations />
+        </section>
     );
 };

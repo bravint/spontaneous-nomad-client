@@ -30,7 +30,7 @@
     height: 100%;
     width: 20rem;
     display: grid;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: 5rem 1fr 5rem;
     align-items: center;
     background-color: var(--clr-offwhite);
     margin: auto;
@@ -44,13 +44,13 @@
 .home-sidebar-text > p {
     font-size: 2rem;
     margin: 1rem 0;
-    text-align: center;
+    text-align: left;
 }
 
 .home-sidebar-conditional-section-title {
     font-size: 3.5rem;
     font-weight: bold;
-    text-align: center;
+    text-align: left;
 }
 
 .home-sidebar-button {

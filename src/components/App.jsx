@@ -26,6 +26,8 @@ import '../styles/app.css';
 export const App = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
+    console.log('states', state); // remove before deploy
+
     const { user } = state;
 
     const navigate = useNavigate();

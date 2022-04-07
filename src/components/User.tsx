@@ -76,7 +76,9 @@ export const User = (props: any) => {
                             Return to Home Page
                         </p>
                     </Link>
-                    <SidebarFooter />
+                    <section className="sidebar-footer">
+                        <SidebarFooter />
+                    </section>
                 </div>
             </div>
         </section>

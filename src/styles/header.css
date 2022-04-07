@@ -28,11 +28,3 @@ header {
     text-align: center;
     cursor: pointer;
 }
-
-.auth-button-login {
-    background-color: var(--clr-sec-purple);
-}
-
-.auth-button-register {
-    background-color: var(--clr-sec-orange);
-}

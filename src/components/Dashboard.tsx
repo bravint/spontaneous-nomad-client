@@ -1,11 +1,12 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 
-import { Header } from './Header';
+import {DashboardSidebar} from './dashboard/DashboardSidebar'
+import { FriendsList } from './dashboard/ViewFriends';
+import { Header } from './dashboard/Header';
 import { SidebarFooter } from './SidebarFooter';
-import { TopLocations } from './dashboard/TopLocations';
 import { GoogleMiniMap } from './dashboard/GoogleMiniMap';
-
-import '../styles/dashboard.css';
+import { ViewLocations } from './map/ViewLocations';
+import { ViewLastLocation } from './dashboard/ViewLastLocation';
 
 import {
     HTTP_AUTH_TYPE,
@@ -16,10 +17,10 @@ import {
 } from '../utils/config';
 import { StoreContext } from '../utils/store';
 
+import '../styles/dashboard.css';
+
 export const Dashboard = () => {
     const { state, dispatch } = useContext(StoreContext);
-
-    const [following, setFollowing] = useState([]);
 
     const handleDispatch = (type: string, payload: any) => {
         dispatch({
@@ -29,8 +30,6 @@ export const Dashboard = () => {
     };
 
     const { user } = state;
-
-    console.log('states', { following }, state);
 
     useEffect(() => {
         const jwt = localStorage.getItem(LOCAL_STORAGE.JWT);
@@ -50,7 +49,7 @@ export const Dashboard = () => {
             }
         };
 
-        const fetchFollowers = async () => {
+        const fetchFriends = async () => {
             const response = await fetch(SERVER_URL.FOLLOW, {
                 method: HTTP_METHOD.GET,
                 headers: {
@@ -61,41 +60,29 @@ export const Dashboard = () => {
             const result = await response.json();
 
             if (result.data) {
-                setFollowing(result.data);
+                handleDispatch(STORE_ACTIONS.FRIENDS, result.data);
             }
         };
 
         fetchLocations();
-        fetchFollowers();
+        fetchFriends();
     }, []);
 
     return (
         <section className="dashboard">
-            <div className="dashboard-main">
-                <Header />
-                <GoogleMiniMap />
-            </div>
-            <section className="dashboard-sidebar">
+            <section className="dashboard-main">
                 <div>
-                    <div className="dashboard-sidebar-profile-container">
-                        <img
-                            className="dashboard-sidebar-profile-img"
-                            src={user.profileImage}
-                            alt="user profile"
-                        />
-                        <h1>{user.username}</h1>
-                    </div>
-                    <div>
-                        <button>Edit Profile</button>
-                        <button>Logout</button>
-                    </div>
+                    <Header />
                 </div>
-                <div>
-                    <h1>Top 5 Places</h1>
-                    <TopLocations />
+                <div className="dashboard-main-map">
+                    <GoogleMiniMap />
+                    <ViewLastLocation />
                 </div>
-                <SidebarFooter />
+                <ViewLocations />
+                <FriendsList />
             </section>
+            <DashboardSidebar />
+            <SidebarFooter />
         </section>
     );
 };

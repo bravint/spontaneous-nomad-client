@@ -36,7 +36,7 @@ export const Home = () => {
                 <div className="home-hero">
                     <div className="home-hero-text-container">
                         <h1 className="home-hero-text">
-                            Save
+                            Share
                             <br />
                             your favourite
                             <br />
@@ -54,7 +54,9 @@ export const Home = () => {
                         </div>
                         {!user && (
                             <div className="home-sidebar-conditional-section">
-                                <p className="home-sidebar-conditional-section-title">Start Here!</p>
+                                <p className="home-sidebar-conditional-section-title">
+                                    Start here!
+                                </p>
                                 <div className="home-auth-link">
                                     <Link to="/login">
                                         <button className="home-sidebar-button  auth-button-login">
@@ -71,7 +73,9 @@ export const Home = () => {
                         )}
                         {user && (
                             <div className="home-sidebar-conditional-section">
-                                <p className="home-sidebar-conditional-section-title">Hi {user.username}!</p>
+                                <p className="home-sidebar-conditional-section-title">
+                                    Hi {user.username}!
+                                </p>
                                 <div className="home-auth-link">
                                     <Link to="/dashboard">
                                         <button className="home-sidebar-button">
@@ -88,7 +92,9 @@ export const Home = () => {
                             </div>
                         )}
                     </div>
-                    <SidebarFooter />
+                    <section className="sidebar-footer">
+                        <SidebarFooter />
+                    </section>
                 </section>
             </section>
         </>

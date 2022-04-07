@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { GoogleMap, Marker } from '@react-google-maps/api';
 
 import { StoreContext } from '../../utils/store';
+import { LOCAL_PATH } from '../../utils/config';
 
 import '../../styles/dashboard.css';
 
@@ -14,7 +15,7 @@ export const GoogleMiniMap = () => {
 
     const navigate = useNavigate();
 
-    const findLastLocation = (array) => array[array.length - 1];
+    const findLastLocation = (array: any) => array[array.length - 1];
 
     const lastLocation = findLastLocation(locations);
 
@@ -23,12 +24,13 @@ export const GoogleMiniMap = () => {
         height: '100%',
     };
 
-    const handleMapClick = () => navigate('../map');
+    const handleMapClick = () => navigate(LOCAL_PATH.MAP);
 
     return (
-        <>
+        <div className="google-mini-map">
+            <h1>Last location added</h1>
             {lastLocation && (
-                <section className="google-mini-maps">
+                <div className="google-map">
                     <GoogleMap
                         onClick={handleMapClick}
                         center={{
@@ -40,7 +42,8 @@ export const GoogleMiniMap = () => {
                         options={{
                             fullscreenControl: false,
                             streetViewControl: false,
-                            mapTypeId: 'satellite',
+                            disableDefaultUI: true,
+                            mapTypeId: 'hybrid',
                         }}
                     >
                         <Marker
@@ -52,8 +55,8 @@ export const GoogleMiniMap = () => {
                             onClick={handleMapClick}
                         />
                     </GoogleMap>
-                </section>
+                </div>
             )}
-        </>
+        </div>
     );
 };
