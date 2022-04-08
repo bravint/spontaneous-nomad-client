@@ -4,9 +4,11 @@ import { STORE_ACTIONS } from './config';
 
 export const initialState = {
     friends: [],
+    friendId: 0,
+    friendName: '',
     locations: [],
     rating: 0,
-    selectedLocations: [],
+    selectedLocation: null,
     user: '',
 };
 
@@ -17,7 +19,7 @@ export const reducer = (state, action) => {
         case STORE_ACTIONS.FRIENDS:
             return {
                 ...state,
-                rating: action.payload,
+                friends: action.payload,
             };
         case STORE_ACTIONS.LOCATIONS:
             return {
@@ -32,13 +34,22 @@ export const reducer = (state, action) => {
         case STORE_ACTIONS.SELECTED_LOCATION:
             return {
                 ...state,
-                rating: action.payload,
+                selectedLocation: action.payload,
             };
-
         case STORE_ACTIONS.USER:
             return {
                 ...state,
                 user: action.payload,
+            };
+        case STORE_ACTIONS.FRIEND_ID:
+            return {
+                ...state,
+                friendId: action.payload,
+            };
+        case STORE_ACTIONS.FRIEND_NAME:
+            return {
+                ...state,
+                friendName: action.payload,
             };
         default:
             throw new Error(`Unknown action type: ${action.type}`);

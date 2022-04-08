@@ -5,16 +5,22 @@ import { EditLocation } from './EditLocation';
 
 import { GoogleMap, InfoWindow, Marker } from '@react-google-maps/api';
 
-import { StoreContext } from '../../utils/store';
+import { StoreContext, initialState } from '../../utils/store';
+import { STORE_ACTIONS } from '../../utils/config';
 
 import '../../styles/map.css';
 
-export const GoogleMaps = (props) => {
-    const { newLocation, setNewLocation } = props;
+export const GoogleMaps = () => {
+    const { state, dispatch } = useContext(StoreContext);
 
-    const { state } = useContext(StoreContext);
+    const { locations, selectedLocation, friendId, user } = state;
 
-    const { locations } = state;
+    const handleDispatch = (type: string, payload: any) => {
+        dispatch({
+            type: type,
+            payload: payload,
+        });
+    };
 
     const initialMapCenter = {
         lat: 0,
@@ -26,12 +32,17 @@ export const GoogleMaps = (props) => {
         height: '100%',
     };
 
-    const [selectedLocation, setSelectedLocation] = useState(null);
+    const [newLocation, setNewLocation] = useState<any>(null);
     const [center, setCenter] = useState(initialMapCenter);
 
-    const handleMarkerClick = (location) => setSelectedLocation(location);
+    const handleMarkerClick = (location: any) =>
+        handleDispatch(STORE_ACTIONS.SELECTED_LOCATION, location);
 
-    function handleMapClick(event) {
+    function handleMapClick(event: any) {
+        if (friendId) {
+            return;
+        }
+
         const newCenter = {
             lat: event.latLng.lat(),
             lng: event.latLng.lng(),
@@ -39,7 +50,7 @@ export const GoogleMaps = (props) => {
 
         setCenter(newCenter);
 
-        const locationToCreate = {
+        const locationToCreate: any = {
             lat: event.latLng.lat(),
             lng: event.latLng.lng(),
         };
@@ -54,14 +65,13 @@ export const GoogleMaps = (props) => {
                 center={center}
                 mapContainerStyle={containerStyle}
                 zoom={4}
-                labels={true}
                 options={{
                     fullscreenControl: false,
                     streetViewControl: false,
                     mapTypeId: 'hybrid',
                 }}
             >
-                {locations.map((location) => {
+                {locations.map((location: any) => {
                     return (
                         <Marker
                             key={location.id}
@@ -76,35 +86,40 @@ export const GoogleMaps = (props) => {
                 {selectedLocation && (
                     <InfoWindow
                         onCloseClick={() => {
-                            setSelectedLocation(null);
+                            handleDispatch(
+                                STORE_ACTIONS.SELECTED_LOCATION,
+                                initialState.selectedLocation
+                            );
+                            setNewLocation(null);
                         }}
                         position={{
                             lat: selectedLocation.lat,
                             lng: selectedLocation.lng,
                         }}
                     >
-                        <EditLocation
-                            selectedLocation={selectedLocation}
-                            setSelectedLocation={setSelectedLocation}
-                        />
+                        <EditLocation />
                     </InfoWindow>
                 )}
                 {newLocation && (
-                    <InfoWindow
-                        onCloseClick={() => {
-                            setSelectedLocation(null);
-                        }}
-                        position={{
-                            lat: newLocation.lat,
-                            lng: newLocation.lng,
-                        }}
-                    >
-                        <CreateLocation
-                            newLocation={newLocation}
-                            setNewLocation={setNewLocation}
-                        />
-                    </InfoWindow>
-                )}
+                        <InfoWindow
+                            onCloseClick={() => {
+                                handleDispatch(
+                                    STORE_ACTIONS.SELECTED_LOCATION,
+                                    initialState.selectedLocation
+                                );
+                                setNewLocation(null);
+                            }}
+                            position={{
+                                lat: newLocation.lat,
+                                lng: newLocation.lng,
+                            }}
+                        >
+                            <CreateLocation
+                                newLocation={newLocation}
+                                setNewLocation={setNewLocation}
+                            />
+                        </InfoWindow>
+                    )}
             </GoogleMap>
         </section>
     );

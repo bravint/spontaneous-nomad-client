@@ -2,11 +2,13 @@ const SERVER_ADDRESS = process.env.REACT_APP_SERVER_ADDRESS as string;
 
 export const GOOGLE_MAPS_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY as string;
 
-export const NUMBER_OF_RECENT_FRIENDS_TO_RENDER = 3 as number;
+export const NUMBER_OF_RECENT_FRIENDS_TO_RENDER = 2 as number;
 
-export const NUMBER_OF_TOP_LOCATIONS_TO_RENDER = 3 as number;
+export const NUMBER_OF_TOP_LOCATIONS_TO_RENDER = 5 as number;
 
 export const STORE_ACTIONS = {
+    FRIEND_ID: 'friendId' as string,
+    FRIEND_NAME: 'friendName' as string,
     USER: 'user' as string,
     LOCATIONS: 'locations' as string,
     RATING: 'rating' as string,

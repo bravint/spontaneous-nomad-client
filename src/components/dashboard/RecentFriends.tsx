@@ -11,23 +11,29 @@ export const RecentlyAddedFriends = () => {
     const [recentFriends, setRecentFriends] = useState([]);
 
     useEffect(() => {
-        const selectedFriends = friends.splice(0, NUMBER_OF_RECENT_FRIENDS_TO_RENDER);
+        const selectedFriends = friends.splice(
+            0,
+            NUMBER_OF_RECENT_FRIENDS_TO_RENDER
+        );
 
         setRecentFriends(selectedFriends);
     }, [friends]);
 
     return (
-        <div className="dashboard-sidebar-friends-list">
-            <h1>Recently Added Friends</h1>
+        <div className="sidebar-friends-list">
+            <h1 className="sidebar-title">Recently Added Friends</h1>
             {recentFriends.map((recentFriend: any) => {
                 return (
-                    <div className="friends-list-item" key={recentFriend}>
-                        <p>{recentFriend.username}</p>
+                    <div
+                        className="sidebar-friends-list-item"
+                        key={recentFriend.id}
+                    >
                         <img
-                            className="friends-list-profile-image"
+                            className="sidebar-friends-list-profile-image"
                             src={recentFriend.profileImage}
                             alt="profile"
                         />
+                        <p>{recentFriend.username}</p>
                     </div>
                 );
             })}

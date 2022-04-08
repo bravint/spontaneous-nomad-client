@@ -1,12 +1,9 @@
 import { useContext, useEffect } from 'react';
 
-import {DashboardSidebar} from './dashboard/DashboardSidebar'
-import { FriendsList } from './dashboard/ViewFriends';
-import { Header } from './dashboard/Header';
-import { SidebarFooter } from './SidebarFooter';
-import { GoogleMiniMap } from './dashboard/GoogleMiniMap';
-import { ViewLocations } from './map/ViewLocations';
-import { ViewLastLocation } from './dashboard/ViewLastLocation';
+import { DashboardSidebar } from './dashboard/Sidebar';
+import { FriendsList } from './dashboard/FriendsList';
+import { GoogleMiniMap } from './dashboard/GoogleMap';
+import { ViewLocationsDashboard } from './dashboard/LocationsList';
 
 import {
     HTTP_AUTH_TYPE,
@@ -15,12 +12,12 @@ import {
     SERVER_URL,
     STORE_ACTIONS,
 } from '../utils/config';
-import { StoreContext } from '../utils/store';
+import { StoreContext, initialState } from '../utils/store';
 
 import '../styles/dashboard.css';
 
 export const Dashboard = () => {
-    const { state, dispatch } = useContext(StoreContext);
+    const { dispatch } = useContext(StoreContext);
 
     const handleDispatch = (type: string, payload: any) => {
         dispatch({
@@ -28,8 +25,6 @@ export const Dashboard = () => {
             payload: payload,
         });
     };
-
-    const { user } = state;
 
     useEffect(() => {
         const jwt = localStorage.getItem(LOCAL_STORAGE.JWT);
@@ -66,23 +61,22 @@ export const Dashboard = () => {
 
         fetchLocations();
         fetchFriends();
+        handleDispatch(STORE_ACTIONS.FRIEND_ID, initialState.friendId);
+        handleDispatch(STORE_ACTIONS.FRIEND_NAME, initialState.friendName);
+        handleDispatch(
+            STORE_ACTIONS.SELECTED_LOCATION,
+            initialState.selectedLocation
+        );
     }, []);
 
     return (
         <section className="dashboard">
             <section className="dashboard-main">
-                <div>
-                    <Header />
-                </div>
-                <div className="dashboard-main-map">
-                    <GoogleMiniMap />
-                    <ViewLastLocation />
-                </div>
-                <ViewLocations />
+                <GoogleMiniMap />
                 <FriendsList />
+                <ViewLocationsDashboard />
             </section>
             <DashboardSidebar />
-            <SidebarFooter />
         </section>
     );
 };

@@ -1,21 +1,66 @@
 .map {
     display: grid;
     grid-template-columns: 1fr 30rem;
-    height: calc(100vh- 4.5rem);
-}
-
-.map > * {
-    width: 100%;
-    height: 100%;
 }
 
 .gm-style .gm-style-iw-c {
-     position: absolute;
-     overflow: hidden;
-     top: 0;
-     left: 0;
-     transform: translate(-50%,-100%);
-     border-radius: 0px;
-     box-shadow: 0 2px 7px 1px rgba(0,0,0,0.3);
- }
- 
+    position: absolute;
+    overflow-y: hidden;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -100%);
+    border-radius: 0px;
+    box-shadow: 0 2px 7px 1px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+.google-maps {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+
+.google-maps :hover {
+    cursor: pointer;
+}
+
+.edit-location-button,
+.create-location-button {
+    border: none;
+    width: 40%;
+    height: 2.5rem;
+    margin: 0.5 0;
+    border-radius: 4px;
+}
+
+.edit-location > form > input,
+.create-location > form > input {
+    width: 100%;
+    height: 2.5rem;
+    border: 1px solid grey;
+    font-size: 1rem;
+}
+
+.edit-location-button-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+}
+
+.edit-button,
+.create-location-button {
+    background-color: #3f51b5;
+    color: var(--clr-white);
+}
+
+.create-location {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.create-location-button {
+    width: 100%;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}

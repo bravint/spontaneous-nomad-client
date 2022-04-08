@@ -15,7 +15,7 @@ export const TopLocations = () => {
             (a, b) => b.rating[0].ratings - a.rating[0].ratings
         );
 
-        clonedLocations = clonedLocations.splice(0, 3);
+        clonedLocations = clonedLocations.splice(0, 5);
 
         return clonedLocations;
     };
@@ -24,7 +24,7 @@ export const TopLocations = () => {
 
     return (
         <div className="dashboard-sidebar-locations-list">
-            <h1>Top 5 Places</h1>
+            <h1 className="sidebar-title">Top 5 Places</h1>
             {sortedLocations && (
                 <>
                     {sortedLocations.map((location) => {
