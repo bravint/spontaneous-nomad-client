@@ -56,6 +56,10 @@ export const GoogleMiniMap = () => {
                         streetViewControl: false,
                         disableDefaultUI: true,
                         mapTypeId: 'hybrid',
+                        draggable: false,
+                        zoomControl: false,
+                        scrollwheel: false,
+                        disableDoubleClickZoom: true,
                     }}
                 >
                     {lastLocation && (
