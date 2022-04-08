@@ -1,9 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect } from 'react';
 
 import { DashboardSidebar } from './dashboard/Sidebar';
 import { FriendsList } from './dashboard/FriendsList';
 import { GoogleMiniMap } from './dashboard/GoogleMap';
-import { ViewLocationsDashboard } from './dashboard/LocationsList';
+// import { ViewLocationsDashboard } from './dashboard/LocationsList';
 
 import {
     HTTP_AUTH_TYPE,
@@ -54,6 +55,7 @@ export const Dashboard = () => {
 
             const result = await response.json();
 
+
             if (result.data) {
                 handleDispatch(STORE_ACTIONS.FRIENDS, result.data);
             }
@@ -74,7 +76,7 @@ export const Dashboard = () => {
             <section className="dashboard-main">
                 <GoogleMiniMap />
                 <FriendsList />
-                <ViewLocationsDashboard />
+                {/* <ViewLocationsDashboard /> */}
             </section>
             <DashboardSidebar />
         </section>

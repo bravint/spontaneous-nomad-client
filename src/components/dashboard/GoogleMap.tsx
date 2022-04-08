@@ -43,7 +43,7 @@ export const GoogleMiniMap = () => {
         <div className="google-mini-map">
             <div className="google-mini-map-title-container">
                 <h1 className="dashboard-main-title">Last location added</h1>
-                <button>Maps</button>
+                {/* <button>Maps</button> */}
             </div>
             <div className="google-map">
                 <GoogleMap

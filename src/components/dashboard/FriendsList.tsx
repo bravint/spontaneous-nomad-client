@@ -2,7 +2,13 @@ import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { StoreContext } from '../../utils/store';
-import { LOCAL_PATH, STORE_ACTIONS } from '../../utils/config';
+import {
+    HTTP_AUTH_TYPE,
+    HTTP_METHOD,
+    LOCAL_PATH,
+    LOCAL_STORAGE,
+    STORE_ACTIONS,
+} from '../../utils/config';
 
 import '../../styles/friends-list.css';
 
@@ -28,6 +34,33 @@ export const FriendsList = () => {
         navigate(LOCAL_PATH.MAP);
     };
 
+    const handleUnfollowClick = async (friend: any) => {
+        const jwt = localStorage.getItem(LOCAL_STORAGE.JWT);
+
+        if (!jwt) {
+            return;
+        }
+
+        const response = await fetch(
+            `http://localhost:4000/follow/${friend.id}`,
+            {
+                method: HTTP_METHOD.DELETE,
+                headers: {
+                    Authorization: HTTP_AUTH_TYPE.BEARER + jwt,
+                },
+            }
+        );
+
+        const result = await response.json();
+
+        if (result.data) {
+            const updatedFriends = friends.filter(
+                (eachFriend: any) => eachFriend.id !== friend.id
+            );
+            handleDispatch(STORE_ACTIONS.FRIENDS, updatedFriends);
+        }
+    };
+
     return (
         <div className="friends-list-container">
             <h1 className="dashboard-main-title">Following</h1>
@@ -35,12 +68,11 @@ export const FriendsList = () => {
                 <div className="friends-list">
                     {friends.map((friend: any) => {
                         return (
-                            <div
-                                className="friends-list-item"
-                                key={friend.id}
-                                onClick={() => handleFriendClick(friend)}
-                            >
-                                <div className="friends-list-item-profile">
+                            <div className="friends-list-item" key={friend.id}>
+                                <div
+                                    className="friends-list-item-profile"
+                                    onClick={() => handleFriendClick(friend)}
+                                >
                                     <img
                                         className="friends-list-profile-image"
                                         src={friend.profileImage}
@@ -48,8 +80,16 @@ export const FriendsList = () => {
                                     />
                                     <p>{friend.username}</p>
                                 </div>
-                                <div className="friends-list-item-button">
-                                    <p>Unfollow</p>
+                                <div
+                                    className="friends-list-item-button"
+                                >
+                                    <button className="friends-list-item-button-btn"
+                                        onClick={() =>
+                                            handleUnfollowClick(friend)
+                                        }
+                                    >
+                                        Unfollow
+                                    </button>
                                 </div>
                             </div>
                         );

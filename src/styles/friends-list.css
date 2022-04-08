@@ -54,3 +54,23 @@
 .friends-list-container {
     height: 100%;
 }
+
+.friends-list-item {
+    display: grid;
+    grid-template-columns: 5rem, 10rem, 1fr;
+}
+
+.friends-list-item-button {
+    display: grid;
+    justify-self: end;
+}
+
+.friends-list-item-button-btn {
+    border: none;
+    background-color: #3f51b5;
+    color: var(--clr-white);
+    border-radius: 4px;
+    height: 3rem;
+    width: 7rem;
+    cursor: pointer;
+}
