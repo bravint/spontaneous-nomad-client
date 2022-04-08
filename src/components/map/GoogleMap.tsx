@@ -101,25 +101,25 @@ export const GoogleMaps = () => {
                     </InfoWindow>
                 )}
                 {newLocation && (
-                        <InfoWindow
-                            onCloseClick={() => {
-                                handleDispatch(
-                                    STORE_ACTIONS.SELECTED_LOCATION,
-                                    initialState.selectedLocation
-                                );
-                                setNewLocation(null);
-                            }}
-                            position={{
-                                lat: newLocation.lat,
-                                lng: newLocation.lng,
-                            }}
-                        >
-                            <CreateLocation
-                                newLocation={newLocation}
-                                setNewLocation={setNewLocation}
-                            />
-                        </InfoWindow>
-                    )}
+                    <InfoWindow
+                        onCloseClick={() => {
+                            handleDispatch(
+                                STORE_ACTIONS.SELECTED_LOCATION,
+                                initialState.selectedLocation
+                            );
+                            setNewLocation(null);
+                        }}
+                        position={{
+                            lat: newLocation.lat,
+                            lng: newLocation.lng,
+                        }}
+                    >
+                        <CreateLocation
+                            newLocation={newLocation}
+                            setNewLocation={setNewLocation}
+                        />
+                    </InfoWindow>
+                )}
             </GoogleMap>
         </section>
     );

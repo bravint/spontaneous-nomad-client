@@ -41,7 +41,7 @@ export const DashboardSidebar = () => {
     return (
         <section className="sidebar">
             <div className="sidebar-header-container">
-            <section className="sidebar-header">
+                <section className="sidebar-header">
                     <div className="sidebar-header-main">
                         <div>
                             <Link to={LOCAL_PATH.ROOT}>
@@ -74,7 +74,7 @@ export const DashboardSidebar = () => {
                         </div>
                     )}
                 </section>
-                </div>
+            </div>
             <section className="sidebar-stats">
                 <TopLocations />
                 <RecentlyAddedFriends />

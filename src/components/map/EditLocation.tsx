@@ -10,7 +10,7 @@ import {
     STORE_ACTIONS,
 } from '../../utils/config';
 
-import '../../styles/map.css'
+import '../../styles/map.css';
 
 export const EditLocation = () => {
     const { dispatch, state } = useContext(StoreContext);
@@ -162,12 +162,20 @@ export const EditLocation = () => {
                         />
                     </form>
                     <div className="edit-location-button-container">
-                    <button className="edit-location-button edit-button" type="submit" onClick={handleSubmit}>
-                        Edit
-                    </button>
-                    <button className="edit-location-button" type="submit" onClick={handleDelete}>
-                        Delete
-                    </button>
+                        <button
+                            className="edit-location-button edit-button"
+                            type="submit"
+                            onClick={handleSubmit}
+                        >
+                            Edit
+                        </button>
+                        <button
+                            className="edit-location-button"
+                            type="submit"
+                            onClick={handleDelete}
+                        >
+                            Delete
+                        </button>
                     </div>
                 </div>
             )}

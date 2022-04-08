@@ -77,38 +77,47 @@ export const App = () => {
     return (
         <StoreContext.Provider value={{ state: state, dispatch: dispatch }}>
             <LoadScript googleMapsApiKey={GOOGLE_MAPS_API_KEY}>
-            <div className="app">
-                {user && (
-                    <Routes>
-                        <Route path={LOCAL_PATH.ROOT} element={<Home />} />
-                        <Route
-                            path={LOCAL_PATH.DASHBOARD}
-                            element={<Dashboard />}
-                        />
-                        <Route path={LOCAL_PATH.MAP} element={<Map />} />
-                        <Route
-                            path={LOCAL_PATH.SUCCESS}
-                            element={<OAuthSuccess />}
-                        />
-                        <Route path={LOCAL_PATH.PROFILE} element={<Profile />} />
-                    </Routes>
-                )}
-                {!user && (
-                    <Routes>
-                        <Route path={LOCAL_PATH.ROOT} element={<Home />} />
-                        <Route path={LOCAL_PATH.LOGIN} element={<Login />} />
-                        <Route path={LOCAL_PATH.PROFILE} element={<Profile />} />
-                        <Route
-                            path={LOCAL_PATH.REGISTER}
-                            element={<Register />}
-                        />
-                        <Route
-                            path={LOCAL_PATH.SUCCESS}
-                            element={<OAuthSuccess />}
-                        />
-                    </Routes>
-                )}
-            </div>
+                <div className="app">
+                    {user && (
+                        <Routes>
+                            <Route path={LOCAL_PATH.ROOT} element={<Home />} />
+                            <Route
+                                path={LOCAL_PATH.DASHBOARD}
+                                element={<Dashboard />}
+                            />
+                            <Route path={LOCAL_PATH.MAP} element={<Map />} />
+                            <Route
+                                path={LOCAL_PATH.SUCCESS}
+                                element={<OAuthSuccess />}
+                            />
+                            <Route
+                                path={LOCAL_PATH.PROFILE}
+                                element={<Profile />}
+                            />
+                        </Routes>
+                    )}
+                    {!user && (
+                        <Routes>
+                            <Route path={LOCAL_PATH.ROOT} element={<Home />} />
+                            <Route
+                                path={LOCAL_PATH.LOGIN}
+                                element={<Login />}
+                            />
+                            <Route
+                                path={LOCAL_PATH.PROFILE}
+                                element={<Profile />}
+                            />
+                            <Route
+                                path={LOCAL_PATH.REGISTER}
+                                element={<Register />}
+                            />
+                            <Route
+                                path={LOCAL_PATH.SUCCESS}
+                                element={<OAuthSuccess />}
+                            />
+                        </Routes>
+                    )}
+                </div>
             </LoadScript>
         </StoreContext.Provider>
     );

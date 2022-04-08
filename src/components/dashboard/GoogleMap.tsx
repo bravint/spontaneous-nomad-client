@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GoogleMap, Marker } from '@react-google-maps/api';
 
-import {ViewLastLocation} from './LastLocation';
+import { ViewLastLocation } from './LastLocation';
 
 import { StoreContext } from '../../utils/store';
 import { LOCAL_PATH } from '../../utils/config';
@@ -42,11 +42,10 @@ export const GoogleMiniMap = () => {
     return (
         <div className="google-mini-map">
             <div className="google-mini-map-title-container">
-            <h1 className="dashboard-main-title">Last location added</h1>
-            <button>Maps</button>
+                <h1 className="dashboard-main-title">Last location added</h1>
+                <button>Maps</button>
             </div>
             <div className="google-map">
-            
                 <GoogleMap
                     onClick={handleMapClick}
                     center={setMapCenter()}

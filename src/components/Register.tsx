@@ -4,7 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import { Profile } from './Profile';
 import { User } from './User';
 
-import { HTTP_METHOD, LOCAL_PATH, LOCAL_STORAGE, SERVER_URL, STORE_ACTIONS } from '../utils/config';
+import {
+    HTTP_METHOD,
+    LOCAL_PATH,
+    LOCAL_STORAGE,
+    SERVER_URL,
+    STORE_ACTIONS,
+} from '../utils/config';
 import { StoreContext } from '../utils/store';
 
 import '../styles/auth.css';

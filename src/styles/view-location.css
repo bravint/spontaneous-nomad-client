@@ -1,7 +1,7 @@
 .view-locations {
     height: 100vh;
     overflow-y: auto;
-    background-color: var(--clr-offwhite)
+    background-color: var(--clr-offwhite);
 }
 
 .view-locations-list {
@@ -25,7 +25,6 @@ svg.star-svg {
     width: 24rem;
     margin: auto;
     position: relative;
-   
 }
 
 .sidebar-header-button {
@@ -53,7 +52,6 @@ svg.star-svg {
     gap: 0.5rem;
     padding: 1rem;
 }
-
 
 .sidebar-button {
     border: none;

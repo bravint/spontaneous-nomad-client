@@ -3,7 +3,13 @@ import { useNavigate } from 'react-router-dom';
 
 import { StoreContext } from '../../utils/store';
 
-import { HTTP_METHOD, LOCAL_PATH, LOCAL_STORAGE, SERVER_URL, STORE_ACTIONS} from '../../utils/config';
+import {
+    HTTP_METHOD,
+    LOCAL_PATH,
+    LOCAL_STORAGE,
+    SERVER_URL,
+    STORE_ACTIONS,
+} from '../../utils/config';
 
 export const OAuthSuccess = () => {
     const { dispatch } = useContext(StoreContext);
