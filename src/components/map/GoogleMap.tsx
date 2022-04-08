@@ -13,7 +13,7 @@ import '../../styles/map.css';
 export const GoogleMaps = () => {
     const { state, dispatch } = useContext(StoreContext);
 
-    const { locations, selectedLocation, friendId, user } = state;
+    const { locations, selectedLocation, friendId } = state;
 
     const handleDispatch = (type: string, payload: any) => {
         dispatch({
