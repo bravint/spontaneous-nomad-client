@@ -1,14 +1,66 @@
-.view-locations > h1 {
-    height: 2rem;
-    margin: 0 1rem;
+.view-locations {
+    height: 100vh;
+    overflow-y: auto;
+    background-color: var(--clr-offwhite)
 }
 
 .view-locations-list {
-    height: 5rem;
-    border-bottom: 1px solid grey;
-    margin: 1rem;
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: var(--clr-white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    align-items: center;
 }
 
 svg.star-svg {
     display: inline;
+    width: 30px;
+    justify-self: right;
+}
+
+.view-locations-container {
+    width: 24rem;
+    margin: auto;
+    position: relative;
+   
+}
+
+.sidebar-header-button {
+    border: none;
+    background-color: #3f51b5;
+    color: var(--clr-white);
+    border-radius: 4px;
+    height: 3rem;
+    width: 10rem;
+    cursor: pointer;
+}
+
+.sidebar-header-profile-img:hover {
+    cursor: pointer;
+}
+
+.dashboard-sidebar-header-menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: right;
+    transform: translate(10%, 65%);
+    background-color: var(--clr-white);
+    display: grid;
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+
+.sidebar-button {
+    border: none;
+    background-color: #3f51b5;
+    color: var(--clr-white);
+    border-radius: 4px;
+    height: 3rem;
+    width: 10rem;
+    cursor: pointer;
 }

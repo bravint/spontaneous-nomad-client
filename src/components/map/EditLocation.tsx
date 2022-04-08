@@ -1,8 +1,8 @@
-import React, { useState, useContext } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useContext, useEffect } from 'react';
 import { Rating } from 'react-simple-star-rating';
 
-import { StoreContext } from '../../utils/store';
-
+import { StoreContext, initialState } from '../../utils/store';
 import {
     HTTP_AUTH_TYPE,
     HTTP_METHOD,
@@ -10,12 +10,12 @@ import {
     STORE_ACTIONS,
 } from '../../utils/config';
 
-export const EditLocation = (props: any) => {
-    const { selectedLocation, setSelectedLocation } = props;
+import '../../styles/map.css'
 
+export const EditLocation = () => {
     const { dispatch, state } = useContext(StoreContext);
 
-    const { locations } = state;
+    const { locations, selectedLocation, friendId } = state;
 
     const handleDispatch = (type: string, payload: any) => {
         dispatch({
@@ -29,6 +29,10 @@ export const EditLocation = (props: any) => {
         lat: selectedLocation.lat,
         lng: selectedLocation.lng,
     };
+
+    useEffect(() => {
+        setForm(initialForm);
+    }, [selectedLocation]);
 
     const initialRating = selectedLocation.rating[0].ratings;
 
@@ -48,9 +52,13 @@ export const EditLocation = (props: any) => {
 
         const locationId = selectedLocation.id;
 
-        const ratingId = selectedLocation.rating[0].id
+        const ratingId = selectedLocation.rating[0].id;
 
-        const locationToCreate = { ...form, rating: rating, ratingId: ratingId };
+        const locationToCreate = {
+            ...form,
+            rating: rating,
+            ratingId: ratingId,
+        };
 
         const jwt = localStorage.getItem(LOCAL_STORAGE.JWT);
 
@@ -79,10 +87,13 @@ export const EditLocation = (props: any) => {
             ]);
         }
 
-        setSelectedLocation(null);
+        handleDispatch(
+            STORE_ACTIONS.SELECTED_LOCATION,
+            initialState.selectedLocation
+        );
     };
 
-    const handleDelete = async (event : any) => {
+    const handleDelete = async (event: any) => {
         event.preventDefault();
 
         const locationId = selectedLocation.id;
@@ -108,37 +119,58 @@ export const EditLocation = (props: any) => {
 
             handleDispatch(STORE_ACTIONS.LOCATIONS, filteredLocations);
 
-            setSelectedLocation(null);
+            handleDispatch(
+                STORE_ACTIONS.SELECTED_LOCATION,
+                initialState.selectedLocation
+            );
         }
     };
 
     return (
-        <div>
-            <h2>Edit Location : {selectedLocation.name}</h2>
-            <Rating
-                ratingValue={rating}
-                size={50}
-                transition
-                className="view-locations-rating"
-                onClick={handleRatingChange}
-            />
+        <>
+            {friendId && (
+                <div className="edit-location">
+                    <h2>{selectedLocation.name}</h2>
+                    <Rating
+                        ratingValue={rating}
+                        size={50}
+                        transition
+                        className="view-locations-rating"
+                        readonly={true}
+                    />
+                </div>
+            )}
+            {!friendId && (
+                <div className="edit-location">
+                    <h2>{selectedLocation.name}</h2>
+                    <Rating
+                        ratingValue={rating}
+                        size={50}
+                        transition
+                        className="view-locations-rating"
+                        onClick={handleRatingChange}
+                    />
 
-            <form onSubmit={handleSubmit}>
-                <input
-                    name="name"
-                    type="text"
-                    placeholder="Name of Location"
-                    value={form.name}
-                    onChange={handleChange}
-                    required
-                />
-            </form>
-            <button type="submit" onClick={handleSubmit}>
-                Edit
-            </button>
-            <button type="submit" onClick={handleDelete}>
-                Delete
-            </button>
-        </div>
+                    <form onSubmit={handleSubmit}>
+                        <input
+                            name="name"
+                            type="text"
+                            placeholder="Name of Location"
+                            value={form.name}
+                            onChange={handleChange}
+                            required
+                        />
+                    </form>
+                    <div className="edit-location-button-container">
+                    <button className="edit-location-button edit-button" type="submit" onClick={handleSubmit}>
+                        Edit
+                    </button>
+                    <button className="edit-location-button" type="submit" onClick={handleDelete}>
+                        Delete
+                    </button>
+                    </div>
+                </div>
+            )}
+        </>
     );
 };

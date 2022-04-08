@@ -1,78 +1,70 @@
 .home {
-    height: 90vh;
-    margin: auto;
-}
-
-.home > header {
-    padding: 0 4rem;
-    background-color: transparent;
-
-    color: #021e40;
-    font-weight: 700;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 30rem;
+    align-items: center;
+    background-color: var(--clr-offwhite);
 }
 
 .home-hero {
-    height: 45rem;
-    width: 1440px;
-    margin: auto;
-
-    background: url(../assets/img/home-hero.jpg);
+    height: 100vh;
+    background: url(../assets/home/home-hero.webp);
     background-repeat: no-repeat;
     background-size: cover;
-
-    border-radius: 4px;
 }
 
 .home-hero-text-container {
     height: 100%;
-    width: 1440px;
-    margin: auto;
-
     display: grid;
     align-items: center;
+    background-color: rgba(0, 0, 0, 0.4)
 }
 
 .home-hero-text {
     color: white;
     font-size: 8rem;
-    margin: 0 4rem;
+    margin: 0 3rem;
 }
 
-.home-call-action {
-    height: 7rem;
-    width: 1080px;
-    margin: auto;
-    padding: 0 2.4rem;
-
-    transform: translateY(-50%);
-    z-index: 1;
-
+.home-sidebar {
+    height: 100%;
+    width: 20rem;
     display: grid;
-    grid-template-columns: 1fr 20rem;
+    grid-template-rows: 5rem 1fr 5rem;
     align-items: center;
-
-    background-color: white;
-    border-radius: 4px;
+    background-color: var(--clr-offwhite);
+    margin: auto;
 }
 
-.home-call-action-text {
-    font-size: 1.5rem;
-}
-
-.home-call-action-auth {
+.home-sidebar-action {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-self: end;
-    gap: 1rem;
+    align-self: center;
 }
 
-.home-auth-button {
-    width: 7rem;
-    padding: 0.6rem 0;
+.home-sidebar-text > p {
+    font-size: 2rem;
+    margin: 1rem 0;
+    text-align: left;
+}
 
-    background-color: rgba(185, 184, 184, 0.6);
+.home-sidebar-conditional-section-title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-align: left;
+}
+
+.home-sidebar-button {
+    border: none;
+    background-color: #3f51b5;
+    color: var(--clr-white);
     border-radius: 4px;
-
-    text-align: center;
+    height: 3rem;
+    width: 100%;
     cursor: pointer;
+}
+
+.home-auth-link {
+    display: grid;
+    gap: 1rem;
+    margin: 2rem 0;
 }

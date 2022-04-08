@@ -3,9 +3,16 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { OAuthLogin } from './oauth/OAuthLogin';
 import { AuthDivider } from './auth/AuthDivider';
+import { SidebarFooter } from './SidebarFooter';
 
 import { StoreContext } from '../utils/store';
-import { HTTP_METHOD, LOCAL_PATH, LOCAL_STORAGE, SERVER_URL, STORE_ACTIONS} from '../utils/config';
+import {
+    HTTP_METHOD,
+    LOCAL_PATH,
+    LOCAL_STORAGE,
+    SERVER_URL,
+    STORE_ACTIONS,
+} from '../utils/config';
 
 import '../styles/auth.css';
 
@@ -100,6 +107,9 @@ export const Login = () => {
                             Return to Home Page
                         </p>
                     </Link>
+                    <section className="sidebar-footer">
+                        <SidebarFooter />
+                    </section>
                 </div>
             </div>
         </section>

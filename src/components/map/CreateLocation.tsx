@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { Rating } from 'react-simple-star-rating';
 
 import { StoreContext } from '../../utils/store';
@@ -11,7 +11,7 @@ import {
 } from '../../utils/config';
 
 export const CreateLocation = (props: any) => {
-    const {newLocation, setNewLocation} = props;
+    const { newLocation, setNewLocation } = props;
 
     const { dispatch, state } = useContext(StoreContext);
 
@@ -30,10 +30,10 @@ export const CreateLocation = (props: any) => {
         lng: newLocation.lng,
     };
 
-    const initialRating = 0
+    const initialRating = 0;
 
     const [form, setForm] = useState(initialForm);
-    const [rating, setRating] = useState(initialRating)
+    const [rating, setRating] = useState(initialRating);
 
     const handleChange = (event: any) => {
         const { name, value } = event.target;
@@ -41,12 +41,12 @@ export const CreateLocation = (props: any) => {
         setForm({ ...form, [name]: value });
     };
 
-    const handleRatingChange = (rate: number) => setRating(rate)
+    const handleRatingChange = (rate: number) => setRating(rate);
 
     const handleSubmit = async (event: any) => {
         event.preventDefault();
 
-        const locationToCreate = {...form , 'rating': rating}
+        const locationToCreate = { ...form, rating: rating };
 
         const jwt = localStorage.getItem(LOCAL_STORAGE.JWT);
 
@@ -58,31 +58,36 @@ export const CreateLocation = (props: any) => {
             },
             body: JSON.stringify(locationToCreate),
         });
-        
+
         const result = await response.json();
 
         if (result.data) {
-            handleDispatch(STORE_ACTIONS.LOCATIONS, [...locations, result.data]);
+            handleDispatch(STORE_ACTIONS.LOCATIONS, [
+                ...locations,
+                result.data,
+            ]);
         }
 
         setNewLocation(null);
     };
 
     return (
-        <>
-        <h2>Create Location</h2>
-        <form onSubmit={handleSubmit}>
-            <input
-                name="name"
-                type="text"
-                placeholder="Name of Location"
-                value={form.name}
-                onChange={handleChange}
-                required
-            />
-            <Rating ratingValue={rating} onClick={handleRatingChange}/>
-            <button type="submit">Add Location</button>
-        </form>
-        </>
+        <div className="create-location">
+            <h2 className="create-location-title">Create Location</h2>
+            <Rating ratingValue={rating} onClick={handleRatingChange} />
+            <form onSubmit={handleSubmit}>
+                <input
+                    name="name"
+                    type="text"
+                    placeholder="Name of Location"
+                    value={form.name}
+                    onChange={handleChange}
+                    required
+                />
+                <button className="create-location-button" type="submit">
+                    Add Location
+                </button>
+            </form>
+        </div>
     );
 };

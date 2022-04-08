@@ -1,6 +1,6 @@
 header {
     height: 4.5rem;
-    width: 1440px;
+    width: 100%;
     margin: auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -27,12 +27,4 @@ header {
     color: var(--clr-white);
     text-align: center;
     cursor: pointer;
-}
-
-.auth-button-login {
-    background-color: var(--clr-sec-purple);
-}
-
-.auth-button-register {
-    background-color: var(--clr-sec-orange);
 }

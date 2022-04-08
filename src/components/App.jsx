@@ -1,8 +1,8 @@
 import { useReducer, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
+import { LoadScript } from '@react-google-maps/api';
 
 import { Dashboard } from './Dashboard';
-// import { Footer } from './Footer';
 import { Home } from './Home';
 import { Login } from './Login';
 import { Map } from './Map';
@@ -12,6 +12,7 @@ import { Register } from './Register';
 
 import { StoreContext, reducer, initialState } from '../utils/store';
 import {
+    GOOGLE_MAPS_API_KEY,
     HTTP_AUTH_TYPE,
     HTTP_METHOD,
     LOCAL_PATH,
@@ -24,6 +25,8 @@ import '../styles/app.css';
 
 export const App = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
+
+    console.log('states', state); // remove before deploy
 
     const { user } = state;
 
@@ -73,9 +76,11 @@ export const App = () => {
 
     return (
         <StoreContext.Provider value={{ state: state, dispatch: dispatch }}>
+            <LoadScript googleMapsApiKey={GOOGLE_MAPS_API_KEY}>
             <div className="app">
                 {user && (
                     <Routes>
+                        <Route path={LOCAL_PATH.ROOT} element={<Home />} />
                         <Route
                             path={LOCAL_PATH.DASHBOARD}
                             element={<Dashboard />}
@@ -104,6 +109,7 @@ export const App = () => {
                     </Routes>
                 )}
             </div>
+            </LoadScript>
         </StoreContext.Provider>
     );
 };

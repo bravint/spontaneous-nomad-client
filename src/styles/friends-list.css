@@ -1,0 +1,56 @@
+.sidebar-friends-list,
+.friends-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 100%);
+    align-content: space-around;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    background-color: var(--clr-offwhite);
+}
+
+.sidebar-friends-list-item,
+.friends-list-item {
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: var(--clr-white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.sidebar-friends-list-item {
+    width: 100%;
+}
+
+.sidebar-friends-list-item > p {
+    text-align: center;
+}
+
+.sidebar-friends-list-profile-image {
+    width: 3.5rem;
+    border-radius: 50%;
+}
+
+.friends-list-profile-image {
+    width: 3rem;
+    border-radius: 50%;
+}
+
+.friends-list-item {
+    background-color: var(--clr-white);
+    width: calc(100% - 2rem);
+    margin: auto;
+}
+
+.friends-list-item-profile {
+    width: 33%;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.friends-list-container {
+    height: 100%;
+}

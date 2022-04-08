@@ -3,19 +3,23 @@ import { createContext } from 'react';
 import { STORE_ACTIONS } from './config';
 
 export const initialState = {
-    user: '',
+    friends: [],
+    friendId: 0,
+    friendName: '',
     locations: [],
     rating: 0,
+    selectedLocation: null,
+    user: '',
 };
 
 export const StoreContext = createContext();
 
 export const reducer = (state, action) => {
     switch (action.type) {
-        case STORE_ACTIONS.USER:
+        case STORE_ACTIONS.FRIENDS:
             return {
                 ...state,
-                user: action.payload,
+                friends: action.payload,
             };
         case STORE_ACTIONS.LOCATIONS:
             return {
@@ -26,6 +30,26 @@ export const reducer = (state, action) => {
             return {
                 ...state,
                 rating: action.payload,
+            };
+        case STORE_ACTIONS.SELECTED_LOCATION:
+            return {
+                ...state,
+                selectedLocation: action.payload,
+            };
+        case STORE_ACTIONS.USER:
+            return {
+                ...state,
+                user: action.payload,
+            };
+        case STORE_ACTIONS.FRIEND_ID:
+            return {
+                ...state,
+                friendId: action.payload,
+            };
+        case STORE_ACTIONS.FRIEND_NAME:
+            return {
+                ...state,
+                friendName: action.payload,
             };
         default:
             throw new Error(`Unknown action type: ${action.type}`);
