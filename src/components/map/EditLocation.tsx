@@ -57,7 +57,7 @@ export const EditLocation = () => {
         const locationToCreate = {
             ...form,
             rating: rating,
-            // ratingId: ratingId,
+            ratingId: ratingId,
         };
 
         console.log('locationToCreate', selectedLocation, locationToCreate)
