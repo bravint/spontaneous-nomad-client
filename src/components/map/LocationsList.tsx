@@ -28,7 +28,7 @@ export const ViewLocations = () => {
 
         handleDispatch(STORE_ACTIONS.USER, null);
 
-        navigate(LOCAL_PATH.ROOT);
+        navigate(LOCAL_PATH.HOME);
     };
 
     const handleShowOption = () => setShowUSerOptions(!showUserOptions);
@@ -88,7 +88,7 @@ export const ViewLocations = () => {
                                 <p>{location.name}</p>
                                 <Rating
                                     readonly={true}
-                                    ratingValue={location.rating[0].ratings}
+                                    ratingValue={location.rating}
                                     allowHover={false}
                                 />
                             </li>

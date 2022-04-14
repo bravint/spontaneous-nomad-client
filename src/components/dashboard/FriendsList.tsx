@@ -7,6 +7,7 @@ import {
     HTTP_METHOD,
     LOCAL_PATH,
     LOCAL_STORAGE,
+    SERVER_URL,
     STORE_ACTIONS,
 } from '../../utils/config';
 
@@ -42,8 +43,7 @@ export const FriendsList = () => {
         }
 
         const response = await fetch(
-            `http://localhost:4000/follow/${friend.id}`,
-            {
+            `${SERVER_URL.FOLLOW}/${friend.id}`, {
                 method: HTTP_METHOD.DELETE,
                 headers: {
                     Authorization: HTTP_AUTH_TYPE.BEARER + jwt,

@@ -30,6 +30,8 @@ export const App = () => {
 
     const navigate = useNavigate();
 
+    console.log('state', state);
+
     const handleDispatch = (type, payload) => {
         dispatch({
             type: type,
@@ -78,7 +80,6 @@ export const App = () => {
                 <div className="app">
                     {user && (
                         <Routes>
-                            <Route path={LOCAL_PATH.ROOT} element={<Home />} />
                             <Route
                                 path={LOCAL_PATH.DASHBOARD}
                                 element={<Dashboard />}
@@ -92,11 +93,12 @@ export const App = () => {
                                 path={LOCAL_PATH.PROFILE}
                                 element={<Profile />}
                             />
+                            <Route path={LOCAL_PATH.HOME} element={<Home />} />
                         </Routes>
                     )}
                     {!user && (
                         <Routes>
-                            <Route path={LOCAL_PATH.ROOT} element={<Home />} />
+                            <Route path={LOCAL_PATH.HOME} element={<Home />} />
                             <Route
                                 path={LOCAL_PATH.LOGIN}
                                 element={<Login />}

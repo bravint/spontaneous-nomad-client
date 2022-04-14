@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect } from 'react';
 
 import { DashboardSidebar } from './dashboard/Sidebar';

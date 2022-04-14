@@ -1,6 +1,7 @@
 const SERVER_ADDRESS = process.env.REACT_APP_SERVER_ADDRESS as string;
 
-export const GOOGLE_MAPS_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY as string;
+export const GOOGLE_MAPS_API_KEY = process.env
+    .REACT_APP_GOOGLE_MAPS_API_KEY as string;
 
 export const NUMBER_OF_RECENT_FRIENDS_TO_RENDER = 2 as number;
 
@@ -26,11 +27,11 @@ export const HTTP_METHOD = {
 
 export const LOCAL_PATH = {
     DASHBOARD: '/dashboard' as string,
+    HOME: '/' as string,
     LOGIN: '/login' as string,
     MAP: '/map' as string,
     PROFILE: '/profile' as string,
     REGISTER: '/register' as string,
-    ROOT: '/' as string,
     SUCCESS: '/success' as string,
 };
 

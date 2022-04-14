@@ -31,7 +31,7 @@ export const DashboardSidebar = () => {
 
         handleDispatch(STORE_ACTIONS.USER, null);
 
-        navigate(LOCAL_PATH.ROOT);
+        navigate(LOCAL_PATH.HOME);
     };
 
     const handleShowOption = () => {
@@ -44,7 +44,7 @@ export const DashboardSidebar = () => {
                 <section className="sidebar-header">
                     <div className="sidebar-header-main">
                         <div>
-                            <Link to={LOCAL_PATH.ROOT}>
+                            <Link to={LOCAL_PATH.HOME}>
                                 <button className="sidebar-header-button">
                                     Back to Home Page
                                 </button>

@@ -15,7 +15,7 @@ export const Home = () => {
 
     const { user } = state;
 
-    const handleDispatch = (type: string, payload: any) => {
+    const handleDispatch = (type: string, payload: null) => {
         dispatch({
             type: type,
             payload: payload,
@@ -27,7 +27,7 @@ export const Home = () => {
 
         handleDispatch(STORE_ACTIONS.USER, null);
 
-        navigate(LOCAL_PATH.ROOT);
+        navigate(LOCAL_PATH.HOME);
     };
 
     return (

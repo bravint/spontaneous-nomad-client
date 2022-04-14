@@ -12,7 +12,7 @@ export const TopLocations = () => {
         let clonedLocations = [...locations];
 
         clonedLocations.sort(
-            (a, b) => b.rating[0].ratings - a.rating[0].ratings
+            (a, b) => b.rating - a.rating
         );
 
         clonedLocations = clonedLocations.splice(0, 5);
@@ -36,7 +36,7 @@ export const TopLocations = () => {
                                 <p>{location.name}</p>
                                 <Rating
                                     readonly={true}
-                                    ratingValue={location.rating[0].ratings}
+                                    ratingValue={location.rating}
                                     allowHover={false}
                                 />
                             </li>

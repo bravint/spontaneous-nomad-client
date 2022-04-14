@@ -21,7 +21,7 @@ export const ViewLastLocation = () => {
                     <h2>{lastLocation.name}</h2>
                     <Rating
                         readonly={true}
-                        ratingValue={lastLocation.rating[0].ratings}
+                        ratingValue={lastLocation.rating}
                         allowHover={false}
                     />
                 </>

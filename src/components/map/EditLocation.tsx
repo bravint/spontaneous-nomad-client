@@ -34,7 +34,7 @@ export const EditLocation = () => {
         setForm(initialForm);
     }, [selectedLocation]);
 
-    const initialRating = selectedLocation.rating[0].ratings;
+    const initialRating = selectedLocation.rating;
 
     const [form, setForm] = useState(initialForm);
     const [rating, setRating] = useState(initialRating);
@@ -52,13 +52,15 @@ export const EditLocation = () => {
 
         const locationId = selectedLocation.id;
 
-        const ratingId = selectedLocation.rating[0].id;
+        const ratingId = selectedLocation.ratingId;
 
         const locationToCreate = {
             ...form,
             rating: rating,
-            ratingId: ratingId,
+            // ratingId: ratingId,
         };
+
+        console.log('locationToCreate', selectedLocation, locationToCreate)
 
         const jwt = localStorage.getItem(LOCAL_STORAGE.JWT);
 

@@ -1,17 +1,11 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 
 import { GoogleMaps } from './map/GoogleMap';
 import { ViewLocations } from './map/LocationsList';
 
 import { StoreContext } from '../utils/store';
-import {
-    HTTP_AUTH_TYPE,
-    HTTP_METHOD,
-    LOCAL_STORAGE,
-    SERVER_URL,
-    STORE_ACTIONS,
-} from '../utils/config';
+import { HTTP_AUTH_TYPE, HTTP_METHOD, LOCAL_STORAGE, SERVER_URL, STORE_ACTIONS } from '../utils/config';
+import { ILocation } from '../utils/model';
 
 import '../styles/map.css';
 
@@ -20,7 +14,7 @@ export const Map = () => {
 
     const { user, friendId } = state;
 
-    const handleDispatch = (type: string, payload: any) => {
+    const handleDispatch = (type: string, payload: Array<ILocation>): void => {
         dispatch({
             type: type,
             payload: payload,
