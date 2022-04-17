@@ -5,13 +5,7 @@ import { FriendsList } from './dashboard/FriendsList';
 import { GoogleMiniMap } from './dashboard/GoogleMap';
 // import { ViewLocationsDashboard } from './dashboard/LocationsList';
 
-import {
-    HTTP_AUTH_TYPE,
-    HTTP_METHOD,
-    LOCAL_STORAGE,
-    SERVER_URL,
-    STORE_ACTIONS,
-} from '../utils/config';
+import { HTTP_AUTH_TYPE, HTTP_METHOD, LOCAL_STORAGE, SERVER_URL, STORE_ACTIONS } from '../utils/config';
 import { StoreContext, initialState } from '../utils/store';
 
 import '../styles/dashboard.css';
@@ -64,10 +58,7 @@ export const Dashboard = () => {
         fetchFriends();
         handleDispatch(STORE_ACTIONS.FRIEND_ID, initialState.friendId);
         handleDispatch(STORE_ACTIONS.FRIEND_NAME, initialState.friendName);
-        handleDispatch(
-            STORE_ACTIONS.SELECTED_LOCATION,
-            initialState.selectedLocation
-        );
+        handleDispatch( STORE_ACTIONS.SELECTED_LOCATION, initialState.selectedLocation);
     }, []);
 
     return (

@@ -3,12 +3,7 @@ import { Rating } from 'react-simple-star-rating';
 
 import { StoreContext } from '../../utils/store';
 
-import {
-    HTTP_AUTH_TYPE,
-    HTTP_METHOD,
-    LOCAL_STORAGE,
-    STORE_ACTIONS,
-} from '../../utils/config';
+import { HTTP_AUTH_TYPE, HTTP_METHOD, LOCAL_STORAGE, SERVER_URL, STORE_ACTIONS } from '../../utils/config';
 
 export const CreateLocation = (props: any) => {
     const { newLocation, setNewLocation } = props;
@@ -35,11 +30,7 @@ export const CreateLocation = (props: any) => {
     const [form, setForm] = useState(initialForm);
     const [rating, setRating] = useState(initialRating);
 
-    const handleChange = (event: any) => {
-        const { name, value } = event.target;
-
-        setForm({ ...form, [name]: value });
-    };
+    const handleChange = (event: any) => setForm({ ...form, [event.target.name]: event.target.value });
 
     const handleRatingChange = (rate: number) => setRating(rate);
 
@@ -50,7 +41,7 @@ export const CreateLocation = (props: any) => {
 
         const jwt = localStorage.getItem(LOCAL_STORAGE.JWT);
 
-        const response = await fetch('http://localhost:4000/location', {
+        const response = await fetch(SERVER_URL.LOCATION, {
             method: HTTP_METHOD.POST,
             headers: {
                 'Content-Type': 'Application/json',
@@ -62,10 +53,7 @@ export const CreateLocation = (props: any) => {
         const result = await response.json();
 
         if (result.data) {
-            handleDispatch(STORE_ACTIONS.LOCATIONS, [
-                ...locations,
-                result.data,
-            ]);
+            handleDispatch(STORE_ACTIONS.LOCATIONS, [ ...locations,  result.data ]);
         }
 
         setNewLocation(null);
