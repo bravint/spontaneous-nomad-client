@@ -7,6 +7,7 @@ import { GoogleMap, InfoWindow, Marker } from '@react-google-maps/api';
 
 import { StoreContext, initialState } from '../../utils/store';
 import { STORE_ACTIONS } from '../../utils/config';
+import { ILocation } from '../../utils/model';
 
 import '../../styles/map.css';
 
@@ -15,7 +16,7 @@ export const GoogleMaps = () => {
 
     const { locations, selectedLocation, friendId } = state;
 
-    const handleDispatch = (type: string, payload: any) => {
+    const handleDispatch = (type: string, payload: ILocation | null) => {
         dispatch({
             type: type,
             payload: payload,
@@ -32,10 +33,10 @@ export const GoogleMaps = () => {
         height: '100%',
     };
 
-    const [newLocation, setNewLocation] = useState<any>(null);
+    const [newLocation, setNewLocation] = useState<ILocation | null>(null);
     const [center, setCenter] = useState(initialMapCenter);
 
-    const handleMarkerClick = (location: any) =>
+    const handleMarkerClick = (location: ILocation) =>
         handleDispatch(STORE_ACTIONS.SELECTED_LOCATION, location);
 
     function handleMapClick(event: any) {
@@ -71,7 +72,7 @@ export const GoogleMaps = () => {
                     mapTypeId: 'hybrid',
                 }}
             >
-                {locations.map((location: any) => {
+                {locations.map((location: ILocation) => {
                     return (
                         <Marker
                             key={location.id}
