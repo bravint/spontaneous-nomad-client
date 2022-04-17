@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { SidebarFooter } from './SidebarFooter';
+import { SidebarFooter } from './footer/SidebarFooter';
 
 import { StoreContext } from '../utils/store';
 import { LOCAL_PATH, LOCAL_STORAGE, STORE_ACTIONS } from '../utils/config';
