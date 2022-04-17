@@ -1,7 +1,7 @@
-import gitHubIcon from '../assets/home/github-icon.svg';
-import linkedInIcon from '../assets/home/linkedin-icon.svg';
+import gitHubIcon from '../../assets/home/github-icon.svg';
+import linkedInIcon from '../../assets/home/linkedin-icon.svg';
 
-import '../styles/sidebar-footer.css';
+import '../../styles/sidebar-footer.css';
 
 export const SidebarFooter = () => {
     return (
