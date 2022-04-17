@@ -2,13 +2,8 @@
 import { useState, useContext, useEffect } from 'react';
 import { Rating } from 'react-simple-star-rating';
 
+import { HTTP_AUTH_TYPE, HTTP_METHOD, LOCAL_STORAGE, SERVER_URL, STORE_ACTIONS } from '../../utils/config';
 import { StoreContext, initialState } from '../../utils/store';
-import {
-    HTTP_AUTH_TYPE,
-    HTTP_METHOD,
-    LOCAL_STORAGE,
-    STORE_ACTIONS,
-} from '../../utils/config';
 
 import '../../styles/map.css';
 
@@ -30,20 +25,16 @@ export const EditLocation = () => {
         lng: selectedLocation.lng,
     };
 
-    useEffect(() => {
-        setForm(initialForm);
-    }, [selectedLocation]);
-
     const initialRating = selectedLocation.rating;
 
     const [form, setForm] = useState(initialForm);
     const [rating, setRating] = useState(initialRating);
 
-    const handleChange = (event: any) => {
-        const { name, value } = event.target;
+    useEffect(() => {
+        setForm(initialForm);
+    }, [selectedLocation]);
 
-        setForm({ ...form, [name]: value });
-    };
+    const handleChange = (event: any) => setForm({ ...form, [event.target.name]: event.target.value });
 
     const handleRatingChange = (rate: number) => setRating(rate);
 
@@ -60,13 +51,10 @@ export const EditLocation = () => {
             ratingId: ratingId,
         };
 
-        console.log('locationToCreate', selectedLocation, locationToCreate)
-
         const jwt = localStorage.getItem(LOCAL_STORAGE.JWT);
 
         const response = await fetch(
-            `http://localhost:4000/location/${locationId}`,
-            {
+            `${SERVER_URL.LOCATION}/${locationId}`, {
                 method: HTTP_METHOD.POST,
                 headers: {
                     'Content-Type': 'Application/json',
@@ -79,20 +67,12 @@ export const EditLocation = () => {
         const result = await response.json();
 
         if (result.data) {
-            const filteredLocations = locations.filter(
-                (location: any) => location.id !== selectedLocation.id
-            );
+            const filteredLocations = locations.filter((location: any) => location.id !== selectedLocation.id);
 
-            handleDispatch(STORE_ACTIONS.LOCATIONS, [
-                ...filteredLocations,
-                result.data,
-            ]);
+            handleDispatch(STORE_ACTIONS.LOCATIONS, [ ...filteredLocations, result.data ]);
+
+            handleDispatch(STORE_ACTIONS.SELECTED_LOCATION, initialState.selectedLocation);
         }
-
-        handleDispatch(
-            STORE_ACTIONS.SELECTED_LOCATION,
-            initialState.selectedLocation
-        );
     };
 
     const handleDelete = async (event: any) => {
@@ -103,8 +83,7 @@ export const EditLocation = () => {
         const jwt = localStorage.getItem(LOCAL_STORAGE.JWT);
 
         const response = await fetch(
-            `http://localhost:4000/location/${locationId}`,
-            {
+            `${SERVER_URL.LOCATION}/${locationId}`, {
                 method: HTTP_METHOD.DELETE,
                 headers: {
                     Authorization: HTTP_AUTH_TYPE.BEARER + jwt,
@@ -115,16 +94,11 @@ export const EditLocation = () => {
         const result = await response.json();
 
         if (result.data) {
-            const filteredLocations = locations.filter(
-                (location: any) => location.id !== selectedLocation.id
-            );
+            const filteredLocations = locations.filter((location: any) => location.id !== selectedLocation.id);
 
             handleDispatch(STORE_ACTIONS.LOCATIONS, filteredLocations);
 
-            handleDispatch(
-                STORE_ACTIONS.SELECTED_LOCATION,
-                initialState.selectedLocation
-            );
+            handleDispatch(STORE_ACTIONS.SELECTED_LOCATION, initialState.selectedLocation);
         }
     };
 
