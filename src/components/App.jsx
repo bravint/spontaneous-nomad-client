@@ -11,15 +11,7 @@ import { OAuthSuccess } from './oauth/OAuthSuccess';
 import { Register } from './Register';
 
 import { StoreContext, reducer, initialState } from '../utils/store';
-import {
-    GOOGLE_MAPS_API_KEY,
-    HTTP_AUTH_TYPE,
-    HTTP_METHOD,
-    LOCAL_PATH,
-    LOCAL_STORAGE,
-    SERVER_URL,
-    STORE_ACTIONS,
-} from '../utils/config';
+import { GOOGLE_MAPS_API_KEY, HTTP_AUTH_TYPE, HTTP_METHOD, LOCAL_PATH, LOCAL_STORAGE, SERVER_URL, STORE_ACTIONS } from '../utils/config';
 
 import '../styles/app.css';
 
@@ -30,7 +22,7 @@ export const App = () => {
 
     const navigate = useNavigate();
 
-    console.log('state', state);
+    console.log('global states', state);
 
     const handleDispatch = (type, payload) => {
         dispatch({
@@ -80,41 +72,20 @@ export const App = () => {
                 <div className="app">
                     {user && (
                         <Routes>
-                            <Route
-                                path={LOCAL_PATH.DASHBOARD}
-                                element={<Dashboard />}
-                            />
+                            <Route path={LOCAL_PATH.DASHBOARD} element={<Dashboard />} />
                             <Route path={LOCAL_PATH.MAP} element={<Map />} />
-                            <Route
-                                path={LOCAL_PATH.SUCCESS}
-                                element={<OAuthSuccess />}
-                            />
-                            <Route
-                                path={LOCAL_PATH.PROFILE}
-                                element={<Profile />}
-                            />
+                            <Route path={LOCAL_PATH.SUCCESS} element={<OAuthSuccess />} />
+                            <Route path={LOCAL_PATH.PROFILE} element={<Profile />} />
                             <Route path={LOCAL_PATH.HOME} element={<Home />} />
                         </Routes>
                     )}
                     {!user && (
                         <Routes>
                             <Route path={LOCAL_PATH.HOME} element={<Home />} />
-                            <Route
-                                path={LOCAL_PATH.LOGIN}
-                                element={<Login />}
-                            />
-                            <Route
-                                path={LOCAL_PATH.PROFILE}
-                                element={<Profile />}
-                            />
-                            <Route
-                                path={LOCAL_PATH.REGISTER}
-                                element={<Register />}
-                            />
-                            <Route
-                                path={LOCAL_PATH.SUCCESS}
-                                element={<OAuthSuccess />}
-                            />
+                            <Route path={LOCAL_PATH.LOGIN} element={<Login />} />
+                            <Route path={LOCAL_PATH.PROFILE} element={<Profile />} />
+                            <Route path={LOCAL_PATH.REGISTER} element={<Register />} />
+                            <Route path={LOCAL_PATH.SUCCESS} element={<OAuthSuccess />} />
                         </Routes>
                     )}
                 </div>
