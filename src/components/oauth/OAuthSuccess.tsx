@@ -2,21 +2,15 @@ import { useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { StoreContext } from '../../utils/store';
-
-import {
-    HTTP_METHOD,
-    LOCAL_PATH,
-    LOCAL_STORAGE,
-    SERVER_URL,
-    STORE_ACTIONS,
-} from '../../utils/config';
+import { HTTP_METHOD, LOCAL_PATH, LOCAL_STORAGE, SERVER_URL, STORE_ACTIONS } from '../../utils/config';
+import { IUser } from '../../utils/model';
 
 export const OAuthSuccess = () => {
     const { dispatch } = useContext(StoreContext);
 
     const navigate = useNavigate();
 
-    const handleDispatch = (type: string, payload: any) => {
+    const handleDispatch = (type: string, payload: IUser) => {
         dispatch({
             type: type,
             payload: payload,

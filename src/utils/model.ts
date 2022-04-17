@@ -18,7 +18,8 @@ export interface IRating {
 }
 
 export interface IUser {
+    bio: string | null;
     id: number;
-    username: string;
     profileImage: string;
+    username: string;
 }
