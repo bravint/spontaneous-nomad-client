@@ -16,7 +16,7 @@ export const Login = () => {
 
     const navigate = useNavigate();
 
-    const handleDispatch = (type: string, payload: IUser) => {
+    const handleDispatch = (type: string, payload: IUser): void => {
         dispatch({
             type: type,
             payload: payload,

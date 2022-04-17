@@ -19,7 +19,7 @@ import '../styles/dashboard.css';
 export const Dashboard = () => {
     const { dispatch } = useContext(StoreContext);
 
-    const handleDispatch = (type: string, payload: any) => {
+    const handleDispatch = (type: string, payload: any): void => {
         dispatch({
             type: type,
             payload: payload,

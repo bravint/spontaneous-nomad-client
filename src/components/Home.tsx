@@ -15,7 +15,7 @@ export const Home = () => {
 
     const { user } = state;
 
-    const handleDispatch = (type: string, payload: null) => {
+    const handleDispatch = (type: string, payload: null): void => {
         dispatch({
             type: type,
             payload: payload,
