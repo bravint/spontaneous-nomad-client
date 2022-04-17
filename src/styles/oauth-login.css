@@ -1,28 +1,10 @@
-.oauth {
-    display: grid;
-    grid-template-columns: repeat(3, 5rem);
-    gap: 1rem;
-    align-items: center;
-    justify-items: center;
-    background-color: white;
-}
-
 .oauth-logo {
     height: 2.5rem;
 }
 
-.oauth-provider:hover {
-    cursor: pointer;
-}
-
-.oauth-container {
-    display: grid;
-    gap: 1rem;
-}
-
 .oauth-provider {
     display: grid;
-    grid-template-columns: 2rem 1fr;
+    grid-template-columns: 2rem 1fr 2rem;
     align-items: center;
     justify-content: space-between;
     gap: 0.5rem;
@@ -31,17 +13,14 @@
     padding: 4px;
 }
 
+.oauth-provider:hover {
+    cursor: pointer;
+}
+
 .oauth-provider-google {
     color: grey;
     font-weight: 600;
     border: 1px solid grey;
-}
-
-.oauth-provider-facebook {
-    background-color: #3c5a9a;
-    color: white;
-    font-weight: 600;
-    border: 1px solid #3c5a9a;
 }
 
 .oauth-text {
