@@ -1,6 +1,6 @@
 import '../../styles/auth-divider.css';
 
-export const AuthDivider = () => {
+export const OAuthDivider = () => {
     return (
         <div className="auth-divider-title-container">
             <div className="auth-divider-title-mid-border">

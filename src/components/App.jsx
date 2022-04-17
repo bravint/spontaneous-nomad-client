@@ -6,7 +6,6 @@ import { Dashboard } from './Dashboard';
 import { Home } from './Home';
 import { Login } from './Login';
 import { Map } from './Map';
-import { Profile } from './Profile';
 import { OAuthSuccess } from './oauth/OAuthSuccess';
 import { Register } from './Register';
 
@@ -75,7 +74,6 @@ export const App = () => {
                             <Route path={LOCAL_PATH.DASHBOARD} element={<Dashboard />} />
                             <Route path={LOCAL_PATH.MAP} element={<Map />} />
                             <Route path={LOCAL_PATH.SUCCESS} element={<OAuthSuccess />} />
-                            <Route path={LOCAL_PATH.PROFILE} element={<Profile />} />
                             <Route path={LOCAL_PATH.HOME} element={<Home />} />
                         </Routes>
                     )}
@@ -83,7 +81,6 @@ export const App = () => {
                         <Routes>
                             <Route path={LOCAL_PATH.HOME} element={<Home />} />
                             <Route path={LOCAL_PATH.LOGIN} element={<Login />} />
-                            <Route path={LOCAL_PATH.PROFILE} element={<Profile />} />
                             <Route path={LOCAL_PATH.REGISTER} element={<Register />} />
                             <Route path={LOCAL_PATH.SUCCESS} element={<OAuthSuccess />} />
                         </Routes>

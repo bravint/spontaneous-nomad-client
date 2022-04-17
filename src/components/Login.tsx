@@ -1,18 +1,13 @@
 import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
+import { OAuthDivider } from './oauth/OAuthDivider';
 import { OAuthLogin } from './oauth/OAuthLogin';
-import { AuthDivider } from './auth/AuthDivider';
 import { SidebarFooter } from './SidebarFooter';
 
+import { HTTP_METHOD, LOCAL_PATH, LOCAL_STORAGE, SERVER_URL, STORE_ACTIONS } from '../utils/config';
+import { IUser } from '../utils/model';
 import { StoreContext } from '../utils/store';
-import {
-    HTTP_METHOD,
-    LOCAL_PATH,
-    LOCAL_STORAGE,
-    SERVER_URL,
-    STORE_ACTIONS,
-} from '../utils/config';
 
 import '../styles/auth.css';
 
@@ -21,7 +16,7 @@ export const Login = () => {
 
     const navigate = useNavigate();
 
-    const handleDispatch = (type: string, payload: any) => {
+    const handleDispatch = (type: string, payload: IUser) => {
         dispatch({
             type: type,
             payload: payload,
@@ -35,11 +30,7 @@ export const Login = () => {
 
     const [form, setForm] = useState(initialForm);
 
-    const handleChange = (event: any) => {
-        const { name, value } = event.target;
-
-        setForm({ ...form, [name]: value });
-    };
+    const handleChange = (event: any) => setForm({ ...form, [event.target.name]: event.target.value });
 
     const handleSubmit = async (event: any) => {
         event.preventDefault();
@@ -54,11 +45,13 @@ export const Login = () => {
 
         const result = await response.json();
 
-        localStorage.setItem(LOCAL_STORAGE.JWT, result.token);
+        if (result.data) {
+            localStorage.setItem(LOCAL_STORAGE.JWT, result.token);
 
-        handleDispatch(STORE_ACTIONS.USER, result.data);
-
-        navigate(LOCAL_PATH.DASHBOARD);
+            handleDispatch(STORE_ACTIONS.USER, result.data);
+    
+            navigate(LOCAL_PATH.DASHBOARD);
+        }
     };
 
     return (
@@ -90,7 +83,7 @@ export const Login = () => {
                         />
                         <button className="auth-form-button">Sign In</button>
                     </form>
-                    <AuthDivider />
+                    <OAuthDivider />
                     <OAuthLogin />
                     <div className="auth-redirect">
                         <h3>Need an account?</h3>
