@@ -20,12 +20,12 @@ export const EditLocation = () => {
     };
 
     const initialForm = {
-        name: selectedLocation.name,
-        lat: selectedLocation.lat,
-        lng: selectedLocation.lng,
+        name: selectedLocation.name as string,
+        lat: selectedLocation.lat as number,
+        lng: selectedLocation.lng as number,
     };
 
-    const initialRating = selectedLocation.rating;
+    const initialRating = selectedLocation.rating as number;
 
     const [form, setForm] = useState(initialForm);
     const [rating, setRating] = useState(initialRating);
@@ -41,9 +41,9 @@ export const EditLocation = () => {
     const handleSubmit = async (event: any) => {
         event.preventDefault();
 
-        const locationId = selectedLocation.id;
+        const locationId = selectedLocation.id as number;
 
-        const ratingId = selectedLocation.ratingId;
+        const ratingId = selectedLocation.ratingId as number;
 
         const locationToCreate = {
             ...form,

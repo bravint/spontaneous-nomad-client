@@ -2,8 +2,9 @@ import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Rating } from 'react-simple-star-rating';
 
-import { StoreContext } from '../../utils/store';
 import { LOCAL_PATH, LOCAL_STORAGE, STORE_ACTIONS } from '../../utils/config';
+import { ILocation } from '../../utils/model';
+import { StoreContext } from '../../utils/store';
 
 import '../../styles/view-location.css';
 
@@ -16,7 +17,7 @@ export const ViewLocations = () => {
 
     const [showUserOptions, setShowUSerOptions] = useState(false);
 
-    const handleDispatch = (type: string, payload: any) => {
+    const handleDispatch = (type: string, payload: ILocation | null) => {
         dispatch({
             type: type,
             payload: payload,
@@ -33,11 +34,9 @@ export const ViewLocations = () => {
 
     const handleShowOption = () => setShowUSerOptions(!showUserOptions);
 
-    const handleLocationSelection = (location: any) =>
-        handleDispatch(STORE_ACTIONS.SELECTED_LOCATION, location);
+    const handleLocationSelection = (location: ILocation) => handleDispatch(STORE_ACTIONS.SELECTED_LOCATION, location);
 
-    const listTitle = () =>
-        !friendName ? 'My Places' : `${friendName}'s Places`;
+    const listTitle = () => !friendName ? 'My Places' : `${friendName}'s Places`;
 
     return (
         <section className="view-locations">
@@ -77,7 +76,7 @@ export const ViewLocations = () => {
                 </section>
 
                 <h1 className="dashboard-main-title">{listTitle()}</h1>
-                {locations.map((location: any) => {
+                {locations.map((location: ILocation) => {
                     return (
                         <div
                             onClick={() => handleLocationSelection(location)}

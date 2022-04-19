@@ -1,12 +1,11 @@
 export interface ILocation {
-    // createdAt: Date;
-    // updatedAt: Date;
-    userId: number;
-    id: number;
-    lat: number;
-    lng: number;
-    name: string;
-    rating: Array<IRating[]>;
+    id: number
+    lat: number
+    lng: number
+    name: string
+    rating: number
+    ratingId: number
+    userId: number
 }
 
 export interface IRating {

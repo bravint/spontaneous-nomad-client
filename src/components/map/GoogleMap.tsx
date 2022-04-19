@@ -1,13 +1,12 @@
 import { useState, useContext } from 'react';
+import { GoogleMap, InfoWindow, Marker } from '@react-google-maps/api';
 
 import { CreateLocation } from './CreateLocation';
 import { EditLocation } from './EditLocation';
 
-import { GoogleMap, InfoWindow, Marker } from '@react-google-maps/api';
-
-import { StoreContext, initialState } from '../../utils/store';
 import { STORE_ACTIONS } from '../../utils/config';
 import { ILocation } from '../../utils/model';
+import { StoreContext, initialState } from '../../utils/store';
 
 import '../../styles/map.css';
 
@@ -36,8 +35,7 @@ export const GoogleMaps = () => {
     const [newLocation, setNewLocation] = useState<ILocation | null>(null);
     const [center, setCenter] = useState(initialMapCenter);
 
-    const handleMarkerClick = (location: ILocation) =>
-        handleDispatch(STORE_ACTIONS.SELECTED_LOCATION, location);
+    const handleMarkerClick = (location: ILocation) => handleDispatch(STORE_ACTIONS.SELECTED_LOCATION, location);
 
     function handleMapClick(event: any) {
         if (friendId) {

@@ -2,7 +2,6 @@ import { useState, useContext } from 'react';
 import { Rating } from 'react-simple-star-rating';
 
 import { StoreContext } from '../../utils/store';
-
 import { HTTP_AUTH_TYPE, HTTP_METHOD, LOCAL_STORAGE, SERVER_URL, STORE_ACTIONS } from '../../utils/config';
 
 export const CreateLocation = (props: any) => {
