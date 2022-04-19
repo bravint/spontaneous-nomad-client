@@ -9,8 +9,6 @@ export interface ILocation {
 }
 
 export interface IRating {
-    // createdAt: Date;
-    // updatedAt: Date;
     userId: number;
     id: number;
     ratings: number;

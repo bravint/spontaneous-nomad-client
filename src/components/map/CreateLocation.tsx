@@ -2,7 +2,9 @@ import { useState, useContext } from 'react';
 import { Rating } from 'react-simple-star-rating';
 
 import { StoreContext } from '../../utils/store';
+import { ILocation } from '../../utils/model';
 import { HTTP_AUTH_TYPE, HTTP_METHOD, LOCAL_STORAGE, SERVER_URL, STORE_ACTIONS } from '../../utils/config';
+
 
 export const CreateLocation = (props: any) => {
     const { newLocation, setNewLocation } = props;
@@ -11,7 +13,7 @@ export const CreateLocation = (props: any) => {
 
     const { locations } = state;
 
-    const handleDispatch = (type: string, payload: any) => {
+    const handleDispatch = (type: string, payload: Array<ILocation>) => {
         dispatch({
             type: type,
             payload: payload,
@@ -19,9 +21,9 @@ export const CreateLocation = (props: any) => {
     };
 
     const initialForm = {
-        name: '',
-        lat: newLocation.lat,
-        lng: newLocation.lng,
+        name: '' as string,
+        lat: newLocation.lat as number,
+        lng: newLocation.lng as number,
     };
 
     const initialRating = 0;
@@ -29,11 +31,15 @@ export const CreateLocation = (props: any) => {
     const [form, setForm] = useState(initialForm);
     const [rating, setRating] = useState(initialRating);
 
-    const handleChange = (event: any) => setForm({ ...form, [event.target.name]: event.target.value });
+    const handleChange = (event: React.SyntheticEvent): void => {
+        const target = event.target as HTMLInputElement;
+
+        setForm({ ...form, [target.name]: target.value });
+    };
 
     const handleRatingChange = (rate: number) => setRating(rate);
 
-    const handleSubmit = async (event: any) => {
+    const handleSubmit = async (event: React.SyntheticEvent) => {
         event.preventDefault();
 
         const locationToCreate = { ...form, rating: rating };
@@ -52,7 +58,10 @@ export const CreateLocation = (props: any) => {
         const result = await response.json();
 
         if (result.data) {
-            handleDispatch(STORE_ACTIONS.LOCATIONS, [ ...locations,  result.data ]);
+            handleDispatch(STORE_ACTIONS.LOCATIONS, [
+                ...locations,
+                result.data,
+            ]);
         }
 
         setNewLocation(null);

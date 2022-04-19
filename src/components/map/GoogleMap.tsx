@@ -37,7 +37,7 @@ export const GoogleMaps = () => {
 
     const handleMarkerClick = (location: ILocation) => handleDispatch(STORE_ACTIONS.SELECTED_LOCATION, location);
 
-    function handleMapClick(event: any) {
+    function handleMapClick(event: any): void{
         if (friendId) {
             return;
         }
