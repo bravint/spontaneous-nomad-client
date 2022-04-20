@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { SidebarLocations } from './SidebarLocations';
 import { SidebarFriends } from './SidebarFriends';
-import { SidebarFooter } from '../Footer';
+import { Footer } from '../Footer';
 
 import { StoreContext } from '../../utils/store';
 import { LOCAL_PATH, LOCAL_STORAGE, STORE_ACTIONS } from '../../utils/config';
@@ -79,7 +79,7 @@ export const Sidebar = () => {
                 <SidebarLocations />
                 <SidebarFriends />
             </section>
-            <SidebarFooter />
+            <Footer />
         </section>
     );
 };
