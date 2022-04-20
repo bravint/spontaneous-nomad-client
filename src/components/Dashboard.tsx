@@ -1,11 +1,12 @@
 import { useContext, useEffect } from 'react';
 
-import { DashboardSidebar } from './dashboard/Sidebar';
 import { FriendsList } from './dashboard/FriendsList';
-import { GoogleMiniMap } from './dashboard/GoogleMap';
-// import { ViewLocationsDashboard } from './dashboard/LocationsList';
+import { LocationsList } from './dashboard/LocationsList';
+import { Map } from './dashboard/Map';
+import { Sidebar } from './dashboard/Sidebar';
 
 import { HTTP_AUTH_TYPE, HTTP_METHOD, LOCAL_STORAGE, SERVER_URL, STORE_ACTIONS } from '../utils/config';
+import { IFriend } from '../utils/model';
 import { StoreContext, initialState } from '../utils/store';
 
 import '../styles/dashboard.css';
@@ -13,7 +14,7 @@ import '../styles/dashboard.css';
 export const Dashboard = () => {
     const { dispatch } = useContext(StoreContext);
 
-    const handleDispatch = (type: string, payload: any): void => {
+    const handleDispatch = (type: string, payload: IFriend | null | number | string): void => {
         dispatch({
             type: type,
             payload: payload,
@@ -64,11 +65,11 @@ export const Dashboard = () => {
     return (
         <section className="dashboard">
             <section className="dashboard-main">
-                <GoogleMiniMap />
+                <Map />
                 <FriendsList />
-                {/* <ViewLocationsDashboard /> */}
+                <LocationsList />
             </section>
-            <DashboardSidebar />
+            <Sidebar />
         </section>
     );
 };

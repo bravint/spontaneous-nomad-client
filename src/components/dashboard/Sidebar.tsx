@@ -1,8 +1,8 @@
 import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { TopLocations } from './TopLocations';
-import { RecentlyAddedFriends } from './RecentFriends';
+import { SidebarLocations } from './SidebarLocations';
+import { SidebarFriends } from './SidebarFriends';
 import { SidebarFooter } from '../footer/SidebarFooter';
 
 import { StoreContext } from '../../utils/store';
@@ -10,7 +10,7 @@ import { LOCAL_PATH, LOCAL_STORAGE, STORE_ACTIONS } from '../../utils/config';
 
 import '../../styles/dashboard.css';
 
-export const DashboardSidebar = () => {
+export const Sidebar = () => {
     const { state, dispatch } = useContext(StoreContext);
 
     const { user } = state;
@@ -76,8 +76,8 @@ export const DashboardSidebar = () => {
                 </section>
             </div>
             <section className="sidebar-stats">
-                <TopLocations />
-                <RecentlyAddedFriends />
+                <SidebarLocations />
+                <SidebarFriends />
             </section>
             <SidebarFooter />
         </section>

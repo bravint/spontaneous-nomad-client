@@ -3,7 +3,7 @@ import { Rating } from 'react-simple-star-rating';
 
 import { StoreContext } from '../../utils/store';
 
-export const TopLocations = () => {
+export const SidebarLocations = () => {
     const { state } = useContext(StoreContext);
 
     const { locations } = state;

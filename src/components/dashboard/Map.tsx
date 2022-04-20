@@ -2,21 +2,21 @@ import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GoogleMap, Marker } from '@react-google-maps/api';
 
-import { ViewLastLocation } from './LastLocation';
+import { MapLocation } from './MapLocation';
 
 import { StoreContext } from '../../utils/store';
 import { LOCAL_PATH } from '../../utils/config';
 
 import '../../styles/dashboard.css';
 
-export const GoogleMiniMap = () => {
+export const Map = () => {
     const { state } = useContext(StoreContext);
 
     const { locations } = state;
 
     const navigate = useNavigate();
 
-    const findLastLocation = (array: any) => array[array.length - 1];
+    const findLastLocation = (array: Array<any>) => array[array.length - 1];
 
     const lastLocation = findLastLocation(locations);
 
@@ -43,11 +43,10 @@ export const GoogleMiniMap = () => {
         <div className="google-mini-map">
             <div className="google-mini-map-title-container">
                 <h1 className="dashboard-main-title">Last location added</h1>
-                {/* <button>Maps</button> */}
+                <button onClick={handleMapClick}>Maps</button>
             </div>
             <div className="google-map">
                 <GoogleMap
-                    onClick={handleMapClick}
                     center={setMapCenter()}
                     mapContainerStyle={containerStyle}
                     zoom={4}
@@ -63,20 +62,17 @@ export const GoogleMiniMap = () => {
                     }}
                 >
                     {lastLocation && (
-                        <>
-                            <Marker
-                                key={lastLocation.id}
-                                position={{
-                                    lat: lastLocation.lat,
-                                    lng: lastLocation.lng,
-                                }}
-                                onClick={handleMapClick}
-                            />
-                        </>
+                        <Marker
+                            key={lastLocation.id}
+                            position={{
+                                lat: lastLocation.lat,
+                                lng: lastLocation.lng,
+                            }}
+                        />
                     )}
                 </GoogleMap>
+                {lastLocation && <MapLocation />}
             </div>
-            <ViewLastLocation />
         </div>
     );
 };

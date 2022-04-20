@@ -113,7 +113,7 @@ export const EditLocation = () => {
 
     return (
         <>
-            {friendId && (
+            {friendId > 0 && (
                 <div className="edit-location">
                     <h2>{selectedLocation.name}</h2>
                     <Rating
@@ -125,7 +125,7 @@ export const EditLocation = () => {
                     />
                 </div>
             )}
-            {!friendId && (
+            {friendId < 1 && (
                 <div className="edit-location">
                     <h2>{selectedLocation.name}</h2>
                     <Rating

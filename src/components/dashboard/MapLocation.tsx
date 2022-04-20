@@ -5,7 +5,7 @@ import { StoreContext } from '../../utils/store';
 
 import '../../styles/dashboard.css';
 
-export const ViewLastLocation = () => {
+export const MapLocation = () => {
     const { state } = useContext(StoreContext);
 
     const { locations } = state;

@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import { NUMBER_OF_RECENT_FRIENDS_TO_RENDER } from '../../utils/config';
 import { StoreContext } from '../../utils/store';
 
-export const RecentlyAddedFriends = () => {
+export const SidebarFriends = () => {
     const { state } = useContext(StoreContext);
 
     const { friends } = state;

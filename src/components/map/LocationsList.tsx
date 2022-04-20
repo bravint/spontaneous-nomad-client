@@ -8,7 +8,7 @@ import { StoreContext } from '../../utils/store';
 
 import '../../styles/view-location.css';
 
-export const ViewLocations = () => {
+export const LocationsList = () => {
     const { state, dispatch } = useContext(StoreContext);
 
     const { locations, user, friendName } = state;
@@ -62,7 +62,6 @@ export const ViewLocations = () => {
                     </div>
                     {showUserOptions && (
                         <div className="dashboard-sidebar-header-menu">
-                            <Link to="">Edit Profile</Link>
                             <li>
                                 <button
                                     className="sidebar-button"

@@ -6,7 +6,7 @@ import { STORE_ACTIONS } from '../../utils/config';
 
 import '../../styles/view-location.css';
 
-export const ViewLocationsDashboard = () => {
+export const LocationsList = () => {
     const { state, dispatch } = useContext(StoreContext);
 
     const { locations } = state;
@@ -22,29 +22,22 @@ export const ViewLocationsDashboard = () => {
         handleDispatch(STORE_ACTIONS.SELECTED_LOCATION, location);
 
     return (
-        <div className="friends-list-container">
-            <h1 className="dashboard-main-title">My Places</h1>
-            <div className="friends-list">
+        <div className="locations-list-container">
+            <h1 className="dashboard-title">My Places</h1>
+            <div className="locations-list">
                 {locations.map((location: any) => {
                     return (
-                        <div className="friends-list-item" key={location.id}>
-                            <div
-                                className="friends-list-item"
-                                key={location.id}
-                                onClick={() =>
-                                    handleLocationSelection(location)
-                                }
-                            >
-                                <p>{location.name}</p>
-                                <Rating
-                                    readonly={true}
-                                    ratingValue={location.rating[0].ratings}
-                                    allowHover={false}
-                                />
-                            </div>
-                            <div>
-                                <p>placeholder</p>
-                            </div>
+                        <div
+                            className="locations-list-item"
+                            key={location.id}
+                            onClick={() => handleLocationSelection(location)}
+                        >
+                            <p>{location.name}</p>
+                            <Rating
+                                readonly={true}
+                                ratingValue={location.ratings}
+                                allowHover={false}
+                            />
                         </div>
                     );
                 })}

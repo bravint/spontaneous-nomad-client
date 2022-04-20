@@ -1,4 +1,13 @@
-.sidebar-friends-list,
+.sidebar-friends-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 100%);
+    align-content: space-around;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    background-color: var(--clr-offwhite);
+}
+
 .friends-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, 100%);
@@ -6,6 +15,7 @@
     justify-content: space-between;
     gap: 1rem;
     width: 100%;
+    height: 100%;
     background-color: var(--clr-offwhite);
 }
 

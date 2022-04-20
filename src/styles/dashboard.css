@@ -28,40 +28,19 @@
 }
 
 .google-map {
-    height: 40rem;
+    height: 100%;
     width: 100%;
     margin: auto;
 }
 
-.google-mini-map {
-    position: relative;
-}
-
-.google-map :hover {
-    cursor: pointer;
-}
-
-.view-last-location {
-    position: absolute;
-    margin: auto;
-    left: 0;
-    right: 0;
-    top: 0;
-    text-align: center;
-    border-radius: 4px;
-    padding: 0.5rem;
-    transform: translate(10rem, 23rem);
-    background-color: var(--clr-white);
-    width: 15rem;
-}
 
 .dashboard-main {
-    height: 100vh;
+    height: 100%;
     width: 100%;
     margin: auto;
-    padding: 1rem 1rem 0 1rem;
+    padding: 1rem 1rem 0;
     display: grid;
-    grid-template-rows: auto 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
     overflow-y: auto;
 }
 

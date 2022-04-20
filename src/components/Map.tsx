@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react';
 
-import { GoogleMaps } from './map/GoogleMap';
-import { ViewLocations } from './map/LocationsList';
+import { GoogleMaps } from './map/Map';
+import { LocationsList } from './map/LocationsList';
 
 import { StoreContext } from '../utils/store';
 import { HTTP_AUTH_TYPE, HTTP_METHOD, LOCAL_STORAGE, SERVER_URL, STORE_ACTIONS } from '../utils/config';
@@ -49,7 +49,7 @@ export const Map = () => {
     return (
         <section className="map">
             <GoogleMaps />
-            <ViewLocations />
+            <LocationsList />
         </section>
     );
 };
