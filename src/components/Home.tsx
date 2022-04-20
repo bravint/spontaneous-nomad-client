@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { SidebarFooter } from './footer/SidebarFooter';
+import { Footer } from './Footer';
 
 import { StoreContext } from '../utils/store';
 import { LOCAL_PATH, LOCAL_STORAGE, STORE_ACTIONS } from '../utils/config';
@@ -93,7 +93,7 @@ export const Home = () => {
                         )}
                     </div>
                     <section className="sidebar-footer">
-                        <SidebarFooter />
+                        <Footer />
                     </section>
                 </section>
             </section>

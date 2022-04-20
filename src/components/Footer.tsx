@@ -3,7 +3,7 @@ import linkedInIcon from '../../assets/home/linkedin-icon.svg';
 
 import '../../styles/sidebar-footer.css';
 
-export const SidebarFooter = () => {
+export const Footer = () => {
     return (
         <section className="sidebar-footer">
             <div className="sidebar-footer-logo-container">

@@ -1,9 +1,9 @@
-import { useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { OAuthDivider } from './oauth/OAuthDivider';
 import { OAuthLogin } from './oauth/OAuthLogin';
-import { SidebarFooter } from './footer/SidebarFooter';
+import { Footer } from './Footer';
 
 import { HTTP_METHOD, LOCAL_PATH, LOCAL_STORAGE, SERVER_URL, STORE_ACTIONS } from '../utils/config';
 import { IUser } from '../utils/model';
@@ -35,7 +35,7 @@ export const Register = () => {
 
     const handleChange = (event: any) => setForm({ ...form, [event.target.name]: event.target.value });
 
-    const handleSubmit = async (event: any) => {
+    const handleSubmit = async (event: React.SyntheticEvent) => {
         event.preventDefault();
 
         const response = await fetch(SERVER_URL.AUTH_REGISTER, {
@@ -138,7 +138,7 @@ export const Register = () => {
                         </p>
                     </Link>
                     <section className="sidebar-footer">
-                        <SidebarFooter />
+                        <Footer />
                     </section>
                 </div>
             </div>
