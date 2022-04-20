@@ -10,7 +10,7 @@ export const MapLocation = () => {
 
     const { locations } = state;
 
-    const findLastLocation = (array: any) => array[array.length - 1];
+    const findLastLocation = (array: Array<any>) => array[array.length - 1];
 
     const lastLocation = findLastLocation(locations);
 

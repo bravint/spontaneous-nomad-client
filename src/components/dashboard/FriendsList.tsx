@@ -1,15 +1,9 @@
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { HTTP_AUTH_TYPE, HTTP_METHOD, LOCAL_PATH, LOCAL_STORAGE, SERVER_URL, STORE_ACTIONS } from '../../utils/config';
+import { IFriend } from '../../utils/model';
 import { StoreContext } from '../../utils/store';
-import {
-    HTTP_AUTH_TYPE,
-    HTTP_METHOD,
-    LOCAL_PATH,
-    LOCAL_STORAGE,
-    SERVER_URL,
-    STORE_ACTIONS,
-} from '../../utils/config';
 
 import '../../styles/friends-list.css';
 
@@ -27,7 +21,7 @@ export const FriendsList = () => {
         });
     };
 
-    const handleFriendClick = (friend: any) => {
+    const handleFriendClick = (friend: IFriend) => {
         handleDispatch(STORE_ACTIONS.FRIEND_ID, friend.id);
 
         handleDispatch(STORE_ACTIONS.FRIEND_NAME, friend.username);
@@ -35,7 +29,7 @@ export const FriendsList = () => {
         navigate(LOCAL_PATH.MAP);
     };
 
-    const handleUnfollowClick = async (friend: any) => {
+    const handleUnfollowClick = async (friend: IFriend) => {
         const jwt = localStorage.getItem(LOCAL_STORAGE.JWT);
 
         if (!jwt) {
@@ -54,9 +48,8 @@ export const FriendsList = () => {
         const result = await response.json();
 
         if (result.data) {
-            const updatedFriends = friends.filter(
-                (eachFriend: any) => eachFriend.id !== friend.id
-            );
+            const updatedFriends = friends.filter((eachFriend: IFriend) => eachFriend.id !== friend.id);
+
             handleDispatch(STORE_ACTIONS.FRIENDS, updatedFriends);
         }
     };
@@ -84,9 +77,7 @@ export const FriendsList = () => {
                                     className="friends-list-item-button"
                                 >
                                     <button className="friends-list-item-button-btn"
-                                        onClick={() =>
-                                            handleUnfollowClick(friend)
-                                        }
+                                        onClick={() => handleUnfollowClick(friend)}
                                     >
                                         Unfollow
                                     </button>

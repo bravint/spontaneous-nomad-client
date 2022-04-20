@@ -11,10 +11,7 @@ export const SidebarFriends = () => {
     const [recentFriends, setRecentFriends] = useState([]);
 
     useEffect(() => {
-        const selectedFriends = friends.splice(
-            0,
-            NUMBER_OF_RECENT_FRIENDS_TO_RENDER
-        );
+        const selectedFriends = friends.splice(0, NUMBER_OF_RECENT_FRIENDS_TO_RENDER);
 
         setRecentFriends(selectedFriends);
     }, [friends]);

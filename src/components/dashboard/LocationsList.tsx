@@ -1,8 +1,9 @@
 import { useContext } from 'react';
 import { Rating } from 'react-simple-star-rating';
 
-import { StoreContext } from '../../utils/store';
 import { STORE_ACTIONS } from '../../utils/config';
+import { ILocation } from '../../utils/model';
+import { StoreContext } from '../../utils/store';
 
 import '../../styles/view-location.css';
 
@@ -11,21 +12,20 @@ export const LocationsList = () => {
 
     const { locations } = state;
 
-    const handleDispatch = (type: string, payload: any) => {
+    const handleDispatch = (type: string, payload: ILocation) => {
         dispatch({
             type: type,
             payload: payload,
         });
     };
 
-    const handleLocationSelection = (location: any) =>
-        handleDispatch(STORE_ACTIONS.SELECTED_LOCATION, location);
+    const handleLocationSelection = (location: ILocation) => handleDispatch(STORE_ACTIONS.SELECTED_LOCATION, location);
 
     return (
         <div className="locations-list-container">
             <h1 className="dashboard-title">My Places</h1>
             <div className="locations-list">
-                {locations.map((location: any) => {
+                {locations.map((location: ILocation) => {
                     return (
                         <div
                             className="locations-list-item"
@@ -35,7 +35,7 @@ export const LocationsList = () => {
                             <p>{location.name}</p>
                             <Rating
                                 readonly={true}
-                                ratingValue={location.ratings}
+                                ratingValue={location.rating}
                                 allowHover={false}
                             />
                         </div>

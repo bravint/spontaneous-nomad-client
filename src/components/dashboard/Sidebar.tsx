@@ -19,7 +19,7 @@ export const Sidebar = () => {
 
     const [showUserOptions, setShowUSerOptions] = useState(false);
 
-    const handleDispatch = (type: string, payload: any) => {
+    const handleDispatch = (type: string, payload: null) => {
         dispatch({
             type: type,
             payload: payload,

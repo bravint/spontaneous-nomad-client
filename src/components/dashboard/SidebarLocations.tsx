@@ -11,9 +11,7 @@ export const SidebarLocations = () => {
     const sortLocations = () => {
         let clonedLocations = [...locations];
 
-        clonedLocations.sort(
-            (a, b) => b.rating - a.rating
-        );
+        clonedLocations.sort((a, b) => b.rating - a.rating);
 
         clonedLocations = clonedLocations.splice(0, 5);
 
