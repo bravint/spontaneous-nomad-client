@@ -32,3 +32,18 @@ export interface ILocationToCreate {
     lat: number;
     lng: number;
 }
+
+export interface IGlobalState {
+    friends: any;
+    friendId: number;
+    friendName: string;
+    locations: any;
+    rating: number;
+    selectedLocation: any;
+    user: any;
+}
+
+export interface IAction {
+    type: string;
+    payload: any;
+}

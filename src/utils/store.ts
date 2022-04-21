@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 
 import { STORE_ACTIONS } from './config';
-import {ILocation, IUser, IFriend} from './model';
+import { IAction, IGlobalState } from './model';
 
 export const initialState = {
     friends: [],
@@ -13,24 +13,15 @@ export const initialState = {
     user: null,
 };
 
-interface IState {
-    friends: any;
-    friendId: number;
-    friendName: string;
-    locations: any;
-    rating: number;
-    selectedLocation: any
-    user: any
-}
-
-type Action = {type : string, payload: any}
-
-export const StoreContext = createContext<{state : IState, dispatch: (action: Action) => void;}>({
+export const StoreContext = createContext<{
+    state: IGlobalState;
+    dispatch: (action: IAction) => void;
+}>({
     state: initialState,
-    dispatch: () => {}
-  });
+    dispatch: () => {},
+});
 
-export const reducer = (state : IState, action: Action) => {
+export const reducer = (state: IGlobalState, action: IAction) => {
     switch (action.type) {
         case STORE_ACTIONS.FRIENDS:
             return {
