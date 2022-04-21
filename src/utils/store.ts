@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 
 import { STORE_ACTIONS } from './config';
-// import {ILocation, IUser, IFriend} from './model';
+import {ILocation, IUser, IFriend} from './model';
 
 export const initialState = {
     friends: [],
@@ -15,10 +15,10 @@ export const initialState = {
 
 interface IState {
     friends: any;
-    friendId: any;
-    friendName: any;
+    friendId: number;
+    friendName: string;
     locations: any;
-    rating: any;
+    rating: number;
     selectedLocation: any
     user: any
 }
