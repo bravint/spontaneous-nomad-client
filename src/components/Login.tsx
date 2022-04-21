@@ -30,8 +30,12 @@ export const Login = () => {
 
     const [form, setForm] = useState(initialForm);
 
-    const handleChange = (event: any) => setForm({ ...form, [event.target.name]: event.target.value });
+    const handleChange = (event: React.SyntheticEvent): void => {
+        const target = event.target as HTMLInputElement;
 
+        setForm({ ...form, [target.name]: target.value });
+    };
+    
     const handleSubmit = async (event: React.SyntheticEvent) => {
         event.preventDefault();
 

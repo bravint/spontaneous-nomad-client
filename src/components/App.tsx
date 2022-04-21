@@ -11,6 +11,7 @@ import { Register } from './Register';
 
 import { StoreContext, reducer, initialState } from '../utils/store';
 import { GOOGLE_MAPS_API_KEY, HTTP_AUTH_TYPE, HTTP_METHOD, LOCAL_PATH, LOCAL_STORAGE, SERVER_URL, STORE_ACTIONS } from '../utils/config';
+import { IUser } from '../utils/model'
 
 import '../styles/app.css';
 
@@ -23,7 +24,7 @@ export const App = () => {
 
     console.log('global states', state);
 
-    const handleDispatch = (type, payload) => {
+    const handleDispatch = (type : string, payload: IUser) => {
         dispatch({
             type: type,
             payload: payload,

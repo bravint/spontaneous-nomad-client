@@ -71,7 +71,7 @@ export const EditLocation = () => {
 
         if (result.data) {
             const filteredLocations = locations.filter(
-                (location: any) => location.id !== selectedLocation.id
+                (location: ILocation) => location.id !== selectedLocation.id
             );
 
             handleDispatch(STORE_ACTIONS.LOCATIONS, [
@@ -103,7 +103,7 @@ export const EditLocation = () => {
         const result = await response.json();
 
         if (result.data) {
-            const filteredLocations = locations.filter((location: any) => location.id !== selectedLocation.id);
+            const filteredLocations = locations.filter((location: ILocation) => location.id !== selectedLocation.id);
 
             handleDispatch(STORE_ACTIONS.LOCATIONS, filteredLocations);
 
