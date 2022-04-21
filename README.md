@@ -8,7 +8,7 @@
 
 <br />
 
-![spontaneously Nomadic example](./public/assets/footballStats.gif)
+![spontaneously Nomadic example](./preview.gif)
 
 <br />
 
