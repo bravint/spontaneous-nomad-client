@@ -2,7 +2,7 @@
   "name": "spontaneous-nomad-client",
   "version": "1.0.0",
   "private": true,
-  "description": "React client for spontaneous-nomad",
+  "description": "React client for spontaneously-nomadic, a full-stack travel logging site",
   "author": "Bravin Thillainathan",
   "license": "ISC",
   "dependencies": {
