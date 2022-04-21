@@ -63,11 +63,12 @@ export const FriendsList = () => {
                         return (
                             <div className="friends-list-item" key={friend.id}>
                                 <div
+                                key={friend.id}
                                     className="friends-list-item-profile"
                                     onClick={() => handleFriendClick(friend)}
                                 >
                                     <img
-                                        className="friends-list-profile-image"
+                                        className="sidebar-friends-list-profile-image"
                                         src={friend.profileImage}
                                         alt="profile"
                                     />

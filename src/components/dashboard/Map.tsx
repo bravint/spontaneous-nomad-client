@@ -43,7 +43,7 @@ export const Map = () => {
         <div className="google-mini-map">
             <div className="google-mini-map-title-container">
                 <h1 className="dashboard-main-title">Last location added</h1>
-                <button onClick={handleMapClick}>Maps</button>
+                <button className="friends-list-item-button-btn" onClick={handleMapClick}>Maps</button>
             </div>
             <div className="google-map">
                 <GoogleMap
@@ -71,7 +71,7 @@ export const Map = () => {
                         />
                     )}
                 </GoogleMap>
-                {lastLocation && <MapLocation />}
+                {/* {lastLocation && <MapLocation />} */}
             </div>
         </div>
     );

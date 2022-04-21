@@ -1,7 +1,6 @@
 import { useContext, useEffect } from 'react';
 
 import { FriendsList } from './dashboard/FriendsList';
-import { LocationsList } from './dashboard/LocationsList';
 import { Map } from './dashboard/Map';
 import { Sidebar } from './dashboard/Sidebar';
 
@@ -67,7 +66,6 @@ export const Dashboard = () => {
             <section className="dashboard-main">
                 <Map />
                 <FriendsList />
-                <LocationsList />
             </section>
             <Sidebar />
         </section>

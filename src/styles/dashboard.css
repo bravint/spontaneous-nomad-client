@@ -6,6 +6,12 @@
     background-color: var(--clr-white);
 }
 
+.google-map {
+    height: calc(100% - 5rem);
+    width: 100%;
+    margin: auto;
+}
+
 .dashboard-sidebar-profile-container {
     padding: 2rem 0;
     display: grid;
@@ -27,28 +33,11 @@
     cursor: pointer;
 }
 
-.google-map {
-    height: 100%;
-    width: 100%;
-    margin: auto;
-}
-
-
-.dashboard-main {
-    height: 100%;
-    width: 100%;
-    margin: auto;
-    padding: 1rem 1rem 0;
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    overflow-y: auto;
-}
-
 .sidebar {
     height: 100vh;
     padding: 0 3rem;
     background-color: var(--clr-offwhite);
-
+    overflow-y: auto;
     display: grid;
 }
 
@@ -70,11 +59,6 @@
     font-size: 1.5rem;
 }
 
-.dashboard-main-title {
-    margin: 2rem 0;
-    font-size: 2rem;
-}
-
 .sidebar-header-main {
     display: flex;
     justify-content: space-between;
@@ -85,4 +69,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.dashboard-main {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: repeat(2, 50vh);
+    padding: 0 1rem;
+}
+
+.dashboard-main-title {
+    font-size: 2rem;
+    margin: 1rem 0;
 }
