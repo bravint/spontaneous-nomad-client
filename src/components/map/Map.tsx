@@ -5,7 +5,7 @@ import { CreateLocation } from './CreateLocation';
 import { EditLocation } from './EditLocation';
 
 import { STORE_ACTIONS } from '../../utils/config';
-import { ILocation } from '../../utils/model';
+import { ILocation, ILocationToCreate } from '../../utils/model';
 import { StoreContext, initialState } from '../../utils/store';
 
 import '../../styles/map.css';
@@ -32,7 +32,7 @@ export const GoogleMaps = () => {
         height: '100%',
     };
 
-    const [newLocation, setNewLocation] = useState<ILocation | null>(null);
+    const [newLocation, setNewLocation] = useState<ILocationToCreate | null>(null);
     const [center, setCenter] = useState(initialMapCenter);
 
     const handleMarkerClick = (location: ILocation) => handleDispatch(STORE_ACTIONS.SELECTED_LOCATION, location);
@@ -49,7 +49,7 @@ export const GoogleMaps = () => {
 
         setCenter(newCenter);
 
-        const locationToCreate: any = {
+        const locationToCreate: ILocationToCreate = {
             lat: event.latLng.lat(),
             lng: event.latLng.lng(),
         };

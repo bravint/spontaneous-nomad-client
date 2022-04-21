@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 
 import { NUMBER_OF_RECENT_FRIENDS_TO_RENDER } from '../../utils/config';
+import { IFriend } from '../../utils/model';
 import { StoreContext } from '../../utils/store';
 
 export const SidebarFriends = () => {
@@ -19,7 +20,7 @@ export const SidebarFriends = () => {
     return (
         <div className="sidebar-friends-list">
             <h1 className="sidebar-title">Recently Added Friends</h1>
-            {recentFriends.map((recentFriend: any) => {
+            {recentFriends.map((recentFriend: IFriend) => {
                 return (
                     <div
                         className="sidebar-friends-list-item"

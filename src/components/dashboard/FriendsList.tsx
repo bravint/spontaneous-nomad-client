@@ -14,7 +14,7 @@ export const FriendsList = () => {
 
     const navigate = useNavigate();
 
-    const handleDispatch = (type: string, payload: any) => {
+    const handleDispatch = (type: string, payload: Array<IFriend> | number | string) => {
         dispatch({
             type: type,
             payload: payload,
@@ -59,7 +59,7 @@ export const FriendsList = () => {
             <h1 className="dashboard-main-title">Following</h1>
             {friends && (
                 <div className="friends-list">
-                    {friends.map((friend: any) => {
+                    {friends.map((friend: IFriend) => {
                         return (
                             <div className="friends-list-item" key={friend.id}>
                                 <div

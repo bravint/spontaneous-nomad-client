@@ -15,15 +15,20 @@ export interface IRating {
 }
 
 export interface IUser {
-    bio: string | null;
+    bio: string;
     id: number;
-    profileImage: string | null;
+    profileImage: string;
     username: string;
 }
 
 export interface IFriend {
     bio: string | null;
     id: number;
-    profileImage: string | null;
+    profileImage: string;
     username: string;
+}
+
+export interface ILocationToCreate {
+    lat: number;
+    lng: number;
 }
