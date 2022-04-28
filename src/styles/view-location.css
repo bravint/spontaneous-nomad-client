@@ -15,6 +15,10 @@
     align-items: center;
 }
 
+.view-locations-list:hover {
+    cursor: pointer;
+}
+
 svg.star-svg {
     display: inline;
     width: 30px;
