@@ -57,7 +57,7 @@ export const Register = () => {
 
             handleDispatch(STORE_ACTIONS.USER, result.data);
     
-            navigate(LOCAL_PATH.DASHBOARD);
+            navigate(LOCAL_PATH.MAP);
         }
     };
 
