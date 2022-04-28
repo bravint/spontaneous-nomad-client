@@ -44,11 +44,11 @@ export const LocationsList = () => {
                 <section className="sidebar-header">
                     <div className="sidebar-header-main">
                         <div>
-                            <Link to={LOCAL_PATH.DASHBOARD}>
+                            {/* <Link to={LOCAL_PATH.DASHBOARD}>
                                 <button className="sidebar-header-button">
                                     Back to Dashboard
                                 </button>
-                            </Link>
+                            </Link> */}
                         </div>
                         <div className="sidebar-header-profile">
                             <h1>{user.username}</h1>

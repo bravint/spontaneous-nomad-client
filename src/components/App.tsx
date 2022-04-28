@@ -56,7 +56,7 @@ export const App = () => {
                 if (result.data) {
                     handleDispatch(STORE_ACTIONS.USER, result.data);
 
-                    navigate(LOCAL_PATH.DASHBOARD);
+                    navigate(LOCAL_PATH.MAP);
                 }
             } catch (error) {
                 console.log(error);
